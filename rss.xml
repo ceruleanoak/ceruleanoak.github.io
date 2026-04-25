@@ -5,31 +5,87 @@
     <link>https://ceruleanoak.github.io</link>
     <description>Devlog posts from CeruleanOak — one developer, small games.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ceruleanoak.github.io/rss.xml" rel="self" type="application/rss+xml"/>
 
     <item>
-      <title>Rewriting the dice combat loop</title>
+      <title>v0.4 — Hut Interiors, Dungeons, Full Audio, and a Major AI Overhaul</title>
       <link>https://ceruleanoak.github.io/#workshop</link>
-      <description>Turns out 7-sided dice break more brains than I expected. Notes on what stuck and what didn&apos;t. [Dice Wars]</description>
-      <pubDate>Wed, 22 Apr 2026 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">ceruleanoak-2026-04-22-dice-combat</guid>
+      <description>Enemies have movement personalities now. Huts have real interior rooms. Each zone pulls from its own tiered roster that scales with depth. Zone-aware spawning means Green, Red, Cyan, Yellow, and Gray all feel distinct. Big one. [Pure Rogue]</description>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2026-04-23-v04</guid>
     </item>
 
     <item>
-      <title>Hanafuda rule-editor notes</title>
+      <title>v0.3, a First Boss, and Two Instruments</title>
       <link>https://ceruleanoak.github.io/#workshop</link>
-      <description>Every household plays koi-koi slightly wrong — and that&apos;s the feature, not the bug. [Hanafuda]</description>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">ceruleanoak-2026-04-14-hanafuda-rules</guid>
+      <description>Dynamic music is live. Unlockable characters are in. Coded my first boss — it was immediately fun. Sound design constraint: square wave and noise only. It&apos;s somehow working. [Pure Rogue]</description>
+      <pubDate>Sat, 22 Mar 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2026-03-22-v03-boss-sound</guid>
     </item>
 
     <item>
-      <title>ASCII pathfinding that feels fair</title>
+      <title>Got Distracted by DiceWars. Also Shipped Pure Rogue.</title>
       <link>https://ceruleanoak.github.io/#workshop</link>
-      <description>A* is correct. It also makes enemies feel psychic. Here&apos;s what I did instead. [Pure Rogue]</description>
-      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">ceruleanoak-2026-03-30-pathfinding</guid>
+      <description>Fixed an old web game I&apos;ve wasted too many hours on. Then shipped Pure Rogue v0.2 anyway. Turns out distraction and productivity aren&apos;t mutually exclusive. [Devlog]</description>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2026-02-24-dicewars-purerogue</guid>
+    </item>
+
+    <item>
+      <title>Closing In on Full Migration</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>Collisions done, camera mostly done, saving and loading restored. Platforms and enemies are next — which is basically the game&apos;s entire variety. Getting close. [Penumbra]</description>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2026-01-18-migration-progress</guid>
+    </item>
+
+    <item>
+      <title>The C++ Engine Runs Crisp (The Player Is Technically Present)</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>The bugs that kept haunting me in GameMaker are gone. The player is invisible — no sprites yet — but collisions work better than they ever did. Nearest-neighbor scaling is fixed. The framerate is genuinely exciting. [Penumbra]</description>
+      <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-12-30-cpp-engine</guid>
+    </item>
+
+    <item>
+      <title>Hanafuda Ships. GameMaker Gets a Farewell.</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>Shipped Hanafuda with a full visual rebuild and two new game modes. Then set up C++ and OpenGL from scratch. Totally normal November. [Devlog]</description>
+      <pubDate>Sun, 30 Nov 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-11-30-hanafuda-cpp</guid>
+    </item>
+
+    <item>
+      <title>The Jury Is In on GameMaker</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>It&apos;s a great tool for experiments. It is not a great tool when things get complicated. The deliberations were brief. Time to transition. [Penumbra]</description>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-10-01-gamemaker-verdict</guid>
+    </item>
+
+    <item>
+      <title>I Built My Own WaniKani Instead of Working on the Game</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>SMTP-powered quizzes, progress reports, scheduled emails — my personal server is becoming something. Stage two of the off-grid plan is underway. The game is also still happening. [Devlog]</description>
+      <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-09-02-personal-server</guid>
+    </item>
+
+    <item>
+      <title>Refactoring a 3,000-Line Camera and Regaining the Will to Live</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>The prototype runs. The code is more manageable now, though whether the refactor was worth it remains genuinely unclear. Also: I have a server again after 15 years. [Penumbra]</description>
+      <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-08-30-camera-refactor</guid>
+    </item>
+
+    <item>
+      <title>The Part Where I Decided to Make My Own Chrono Trigger</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>GameMaker prototype is running. Puzzle rooms, character switching, stealth detection, fake 3D elevation. 12-year-old me would be proud. I have a full-time job and three kids, which makes this either impressive or concerning. [Penumbra]</description>
+      <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2023-11-30-origin</guid>
     </item>
 
   </channel>
