@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CeruleanOak — Small games. Built solo.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #f4ead0;
+    --ink: #2a241e;
+    --ink-2: #5e5449;
+    --ink-3: #8d8377;
+    --line: #3d3528;
+    --note: #fbf8f1;
+    --note-yellow: #fff8df;
+    --note-teal: #c1eeea;
+    --note-pink: #ffd9d0;
+    --accent: #c74a24;
+    --canopy: #3fb8b0;
+    --grass: #8fc23e;
+    --gold: #f3c95a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background: var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(60,50,35,0.10) 1px, transparent 0);
+    background-size: 18px 18px;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  .pixelated { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
+  a { color: inherit; }
+
+  /* Top bar */
+  .topbar {
+    background: var(--ink);
+    color: var(--note);
+    padding: 14px 36px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1.5px solid #000;
+  }
+  .lockup { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: -0.01em; }
+  .lockup b { font-weight: 700; }
+  .nav { display: flex; gap: 22px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #bfb6a4; letter-spacing: 0.1em; text-transform: uppercase; }
+  .nav a { text-decoration: none; transition: color .15s; }
+  .nav a:hover { color: var(--gold); }
+
+  /* Layout */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 36px; }
+
+  /* Hero row */
+  .hero {
+    padding-top: 56px;
+    padding-bottom: 32px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .note {
+    background: var(--note);
+    border: 1.5px solid var(--line);
+    box-shadow: 5px 7px 0 rgba(0,0,0,0.09);
+    position: relative;
+  }
+  .tape {
+    position: absolute;
+    border: 1px dashed rgba(0,0,0,0.18);
+    pointer-events: none;
+  }
+  .tape--teal { background: rgba(63,184,176,0.55); }
+  .tape--orange { background: rgba(231,90,43,0.5); }
+
+  .hero-note { padding: 32px 36px 28px; transform: rotate(-0.6deg); }
+  .hero-note .tape { top: -12px; left: 56px; width: 96px; height: 26px; transform: rotate(-3deg); }
+  .hand-kicker { font-family: 'Kalam', cursive; font-size: 14px; color: var(--ink-3); }
+  .hero-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 68px;
+    line-height: 0.96;
+    margin: 8px 0 0;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em { color: var(--accent); font-style: italic; }
+  .hero-body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #3a2d18;
+    margin: 18px 0 0;
+    max-width: 540px;
+  }
+  .hero-cta { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 11px 18px;
+    border: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--note);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(-1px, -1px); box-shadow: 2px 2px 0 var(--accent); }
+  .btn--ghost { background: transparent; color: var(--ink); }
+  .btn--ghost:hover { box-shadow: 2px 2px 0 var(--ink); }
+
+  /* Now card */
+  .now-note { padding: 32px 24px 22px; transform: rotate(1.1deg); background: var(--note-yellow); }
+  .now-note .tape { top: -12px; right: 30px; width: 78px; height: 22px; transform: rotate(4deg); }
+  .now-row { display: flex; justify-content: space-between; align-items: center; }
+  .now-kicker { font-family: 'Kalam', cursive; font-size: 14px; color: var(--ink-3); }
+  .now-status { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grass); letter-spacing: 0.06em; }
+  .now-title { font-family: 'Fraunces', serif; font-weight: 700; font-style: italic; font-size: 28px; margin: 4px 0 0; line-height: 1.05; }
+  .now-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); margin-top: 4px; letter-spacing: 0.04em; }
+  .now-body { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-2); margin-top: 10px; line-height: 1.45; }
+  .progress-row { display: flex; justify-content: space-between; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-2); margin: 14px 0 6px; white-space: nowrap; }
+  .progress {
+    height: 12px;
+    border: 1.5px solid var(--line);
+    background: var(--note);
+    display: flex;
+  }
+  .progress > div { flex: 1; border-right: 1px solid var(--line); }
+  .progress > div:last-child { border-right: none; }
+  .progress > div.fill { background: var(--accent); }
+  .now-tags { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: 1.2px solid var(--line);
+    background: var(--note);
+    padding: 3px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background .15s;
+  }
+  .tag:hover { background: var(--gold); }
+
+  /* Divider with kicker */
+  .divider {
+    display: flex; align-items: center; gap: 14px;
+    padding: 30px 0 0;
+  }
+  .divider .line { flex: 1; height: 2px; background: var(--line); }
+  .divider span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+
+  /* Game cards */
+  .games {
+    padding: 30px 0 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .game-wrap {
+    position: relative;
+    box-shadow: 5px 6px 0 rgba(0,0,0,0.08);
+    transition: transform .18s, box-shadow .18s;
+  }
+  .game-wrap:hover { transform: translate(-2px, -3px) rotate(0deg) !important; box-shadow: 8px 9px 0 rgba(0,0,0,0.10); }
+  .game-wrap:nth-child(1) { transform: rotate(-0.9deg); }
+  .game-wrap:nth-child(2) { transform: rotate(0.6deg); }
+  .game-wrap:nth-child(3) { transform: rotate(-0.3deg); }
+  .pin {
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px; height: 16px;
+    border-radius: 16px;
+    border: 1.5px solid var(--line);
+    box-shadow: inset -2px -2px 0 rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.2);
+    z-index: 3;
+  }
+  .pin--red { background: var(--accent); }
+  .pin--teal { background: var(--canopy); }
+  .pin--gold { background: var(--gold); }
+
+  .card {
+    background: var(--note);
+    border: 1.5px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+  }
+  .well {
+    height: 200px;
+    border-bottom: 1.5px solid var(--line);
+    overflow: hidden;
+    position: relative;
+    background: #111;
+  }
+  .well img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .genre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .card-title { font-weight: 700; font-size: 22px; line-height: 1.1; color: var(--ink); }
+  .card-body p { margin: 0; font-size: 13px; color: var(--ink-2); line-height: 1.5; flex: 1; }
+  .play-btn {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 18px;
+    border: 1.5px solid var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--note);
+    background: var(--ink);
+    transition: background .15s, color .15s;
+  }
+  .play-btn:hover { background: var(--accent); border-color: var(--accent); }
+
+  /* Per-game register overrides */
+  .card--rogue .card-title { font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em; }
+  .card--hanafuda { background: #fbf5e5; }
+  .card--hanafuda .card-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 700; }
+  .card--hanafuda .genre { color: #8a7450; }
+  .card--dice { background: #1f1d1a; color: #fbf8f1; }
+  .card--dice .card-title { color: var(--note); }
+  .card--dice .card-body p { color: #bfb6a4; }
+  .card--dice .play-btn { background: var(--note); color: #1f1d1a; border-color: var(--note); }
+  .card--dice .play-btn:hover { background: var(--accent); color: var(--note); border-color: var(--accent); }
+
+  /* Workshop + stickies */
+  .workshop {
+    padding: 0 0 36px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 28px;
+  }
+  .workshop-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+  .workshop-head h2 { font-family: 'Fraunces', serif; font-weight: 700; font-style: italic; font-size: 24px; margin: 0; }
+  .rss-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: none; }
+  .rss-link:hover { text-decoration: underline; }
+  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .post {
+    background: var(--note);
+    border: 1.5px solid var(--line);
+    padding: 14px 16px;
+    box-shadow: 3px 4px 0 rgba(0,0,0,0.07);
+    transition: transform .18s, box-shadow .18s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .post:nth-child(1) { transform: rotate(-0.4deg); }
+  .post:nth-child(2) { transform: rotate(0.3deg); }
+  .post:nth-child(3) { transform: rotate(-0.2deg); }
+  .post:hover { transform: translate(-1px, -2px) rotate(0deg) !important; box-shadow: 5px 6px 0 rgba(0,0,0,0.09); }
+  .post-meta { display: flex; justify-content: space-between; align-items: center; }
+  .post-date { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); }
+  .post-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; font-size: 17px; line-height: 1.2; margin: 10px 0 8px; }
+  .post-excerpt { font-size: 12px; color: var(--ink-2); line-height: 1.45; margin: 0; }
+  .post-read { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); margin-top: 10px; letter-spacing: 0.06em; }
+
+  /* Stickies */
+  .stickies { display: flex; flex-direction: column; gap: 16px; }
+  .sticky {
+    padding: 16px 18px;
+    border: 1.5px solid var(--line);
+    box-shadow: 3px 4px 0 rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: transform .18s, box-shadow .18s;
+  }
+  .sticky:hover { transform: translate(-1px, -2px) rotate(0deg) !important; box-shadow: 5px 6px 0 rgba(0,0,0,0.1); }
+  .sticky--teal { background: var(--note-teal); transform: rotate(1.3deg); }
+  .sticky--pink { background: var(--note-pink); transform: rotate(-0.9deg); }
+  .sticky-kicker { font-family: 'Kalam', cursive; font-size: 13px; color: var(--ink); }
+  .sticky-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 700; font-size: 22px; margin: 2px 0 4px; }
+  .sticky-body { font-size: 12px; color: #3a2424; line-height: 1.45; }
+  .sticky--teal .sticky-body { color: #1f3a38; }
+  .sticky-handle { font-family: 'JetBrains Mono', monospace; font-size: 10px; margin-top: 8px; letter-spacing: 0.04em; }
+
+  /* About strip */
+  .about {
+    padding: 16px 0 40px;
+  }
+  .about-note {
+    background: var(--note);
+    border: 1.5px solid var(--line);
+    padding: 22px 28px;
+    transform: rotate(-0.3deg);
+    box-shadow: 4px 5px 0 rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .about p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink-2); max-width: 720px; }
+  .about p strong { color: var(--ink); font-weight: 600; }
+  .about-links { display: flex; flex-direction: column; gap: 8px; }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: #bfb6a4;
+    padding: 20px 36px;
+    margin-top: 16px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    border-top: 2px solid #000;
+  }
+  footer b { color: var(--note); font-weight: 700; }
+  footer .footer-links { display: flex; gap: 18px; text-transform: uppercase; letter-spacing: 0.08em; }
+  footer .footer-links a { text-decoration: none; transition: color .15s; }
+  footer .footer-links a:hover { color: var(--gold); }
+
+  /* Mobile */
+  @media (max-width: 760px) {
+    .container { padding: 0 18px; }
+    .topbar { padding: 14px 18px; }
+    .nav { display: none; }
+    .hero { grid-template-columns: 1fr; gap: 18px; padding-top: 28px; padding-bottom: 18px; }
+    .hero-title { font-size: 40px; }
+    .games { grid-template-columns: 1fr; gap: 28px; padding: 24px 0 24px; }
+    .game-wrap { transform: rotate(0deg) !important; }
+    .workshop { grid-template-columns: 1fr; gap: 20px; }
+    .posts { grid-template-columns: 1fr; }
+    .post { transform: rotate(0deg) !important; }
+    .about-note { grid-template-columns: 1fr; }
+    .about-links { flex-direction: row; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 10px; padding: 16px 18px; }
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+  // Pixel-oak SVG component, broccoli canopy, trunk, grass.
+  // 16-cell grid scaled to any size.
+  const OAK_GRID = [
+    '.....tt..tt.....',
+    '....tttttttt....',
+    '..tttttttttttt..',
+    '.ttttttttttttt..',
+    '.ttttttttttttttt',
+    'ttttttttttttttt.',
+    'ttttttdkttttttt.',
+    '.tttttkktttttt..',
+    '..ttttkkttttt...',
+    '...tttkkttt.....',
+    '......kkk.......',
+    '.....kkkk.......',
+    '....kkkkkk......',
+    '...gggggggg.....',
+    '..ggggggggggg...',
+    '................',
+  ];
+  const COLOR = { t: '#3fb8b0', d: '#2b8e88', k: '#8a6a45', g: '#8fc23e' };
+  function PixelOak({ size = 22 }) {
+    const px = size / 16;
+    const rects = [];
+    OAK_GRID.forEach((row, y) => {
+      [...row].forEach((ch, x) => {
+        if (COLOR[ch]) rects.push(<rect key={`${x}-${y}`} x={x * px} y={y * px} width={px} height={px} fill={COLOR[ch]} />);
+      });
+    });
+    return (
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ imageRendering: 'pixelated', shapeRendering: 'crispEdges', flexShrink: 0 }}>
+        {rects}
+      </svg>
+    );
+  }
+  window.PixelOak = PixelOak;
+</script>
+
+</head>
+<body>
+
+<div class="topbar">
+  <a class="lockup" href="/" style="text-decoration:none; color:inherit;">
+    <span id="oak-nav"></span>
+    <span>cerulean<b>oak</b></span>
+  </a>
+  <nav class="nav">
+    <a href="#games">Games</a>
+    <a href="#now">Now</a>
+    <a href="#workshop">Devlog</a>
+    <a href="#about">About</a>
+  </nav>
+</div>
+
+<main class="container">
+
+  <!-- Hero row -->
+  <section class="hero">
+    <article class="note hero-note">
+      <span class="tape tape--teal"></span>
+      <div class="hand-kicker">hi, I'm the dev →</div>
+      <h1 class="hero-title">Small games.<br><em>Built solo.</em></h1>
+      <p class="hero-body">
+        Three browser games, one developer. No install, no account, no launcher.
+        Open a tab — you're already playing. Below: what's live, what's in progress, and how to follow along.
+      </p>
+      <div class="hero-cta">
+        <a class="btn" href="#games">Jump to games ↓</a>
+        <a class="btn btn--ghost" href="#now">What I'm making now</a>
+      </div>
+    </article>
+
+    <article id="now" class="note now-note">
+      <span class="tape tape--orange"></span>
+      <div class="now-row">
+        <span class="now-kicker">Now · April 2026</span>
+        <span class="now-status">● in dev</span>
+      </div>
+      <div class="now-title">Pure Rogue</div>
+      <div class="now-sub">an ASCII Roguelike</div>
+      <p class="now-body">
+        A successor to the original. Currently working on procedural dungeon flow, food &amp; recipe systems, and a combat loop that doesn't punish patience.
+      </p>
+      <div class="progress-row"><span>progress</span><span>20% · ships when ready</span></div>
+      <div class="progress" id="progress-bar"></div>
+      <div class="now-tags">
+        <a class="tag" href="#workshop">Devlog ↗</a>
+        <a class="tag" href="#youtube">YouTube ↗</a>
+        <a class="tag" href="#discord">Discord ↗</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- Games divider -->
+  <div class="divider" id="games">
+    <div class="line"></div>
+    <span>Play · three games live</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Game cards -->
+  <section class="games">
+    <div class="game-wrap">
+      <span class="pin pin--red"></span>
+      <article class="card card--rogue">
+        <div class="well"><img src="assets/screenshot-roguelike.png" alt="ASCII Roguelike screenshot" /></div>
+        <div class="card-body">
+          <div class="genre">Roguelike · Discovery · Real-time</div>
+          <div class="card-title">ASCII Roguelike</div>
+          <p>A real-time dungeon crawler in pure ASCII. Discover recipes, fight your way deeper, and decide when to bank your loot — death resets everything.</p>
+          <a class="play-btn" href="https://ceruleanoak.github.io/ascii-roguelike" target="_blank" rel="noopener">Play <span>→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="game-wrap">
+      <span class="pin pin--teal"></span>
+      <article class="card card--hanafuda">
+        <div class="well"><img src="assets/screenshot-hanafuda.png" alt="Hanafuda Koi-Koi screenshot" /></div>
+        <div class="card-body">
+          <div class="genre">Card Game · 2–4 Players · Traditional</div>
+          <div class="card-title">Hanafuda Koi-Koi</div>
+          <p>A faithful digital version of the traditional Japanese card game. Multiple regional variants, and rules you can customize to match how you learned.</p>
+          <a class="play-btn" href="https://ceruleanoak.github.io/hanafuda" target="_blank" rel="noopener">Play <span>→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="game-wrap">
+      <span class="pin pin--gold"></span>
+      <article class="card card--dice">
+        <div class="well"><img src="assets/screenshot-dicewars.png" alt="Dice Wars Reloaded screenshot" /></div>
+        <div class="card-body">
+          <div class="genre">Strategy · Territory · Fast-play</div>
+          <div class="card-title">Dice Wars Reloaded</div>
+          <p>The classic territory dice game, stripped of fluff. Conquer a procedurally generated map with nothing but numbers and nerve.</p>
+          <a class="play-btn" href="https://ceruleanoak.github.io/dicewars" target="_blank" rel="noopener">Play <span>→</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Workshop + stickies -->
+  <section class="workshop" id="workshop">
+    <div>
+      <div class="workshop-head">
+        <h2>From the workshop</h2>
+        <a class="rss-link" href="/rss.xml">Subscribe · RSS ↗</a>
+      </div>
+      <div class="posts">
+        <a class="post" href="#">
+          <div class="post-meta">
+            <span class="tag">Dice Wars</span>
+            <span class="post-date">APR 22</span>
+          </div>
+          <div class="post-title">Rewriting the dice combat loop</div>
+          <p class="post-excerpt">Turns out 7-sided dice break more brains than I expected. Notes on what stuck and what didn't.</p>
+          <div class="post-read">Read →</div>
+        </a>
+        <a class="post" href="#">
+          <div class="post-meta">
+            <span class="tag">Hanafuda</span>
+            <span class="post-date">APR 14</span>
+          </div>
+          <div class="post-title">Hanafuda rule-editor notes</div>
+          <p class="post-excerpt">Every household plays koi-koi slightly wrong — and that's the feature, not the bug.</p>
+          <div class="post-read">Read →</div>
+        </a>
+        <a class="post" href="#">
+          <div class="post-meta">
+            <span class="tag">Pure Rogue</span>
+            <span class="post-date">MAR 30</span>
+          </div>
+          <div class="post-title">ASCII pathfinding that feels fair</div>
+          <p class="post-excerpt">A* is correct. It also makes enemies feel psychic. Here's what I did instead.</p>
+          <div class="post-read">Read →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="stickies">
+      <a class="sticky sticky--teal" id="discord" href="https://discord.gg/ceruleanoak" target="_blank" rel="noopener">
+        <div class="sticky-kicker">come hang out →</div>
+        <div class="sticky-title">Discord</div>
+        <div class="sticky-body">Small server. Dev updates, playtests, the occasional rubber-duck session.</div>
+        <div class="sticky-handle">→ discord.gg/ceruleanoak</div>
+      </a>
+      <a class="sticky sticky--pink" id="youtube" href="https://youtube.com/@ceruleanoak" target="_blank" rel="noopener">
+        <div class="sticky-kicker">watch me work →</div>
+        <div class="sticky-title">YouTube</div>
+        <div class="sticky-body">Devlog videos. Feature breakdowns, ugly first passes, the occasional rant about tile-sets.</div>
+        <div class="sticky-handle">→ youtube.com/@ceruleanoak</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- About strip -->
+  <section class="about" id="about">
+    <article class="about-note note">
+      <p>
+        <strong>CeruleanOak</strong> is one developer, one room, and a stack of small games that don't ask much of you.
+        Browser-only. No accounts. No telemetry. If you've got five minutes, there's something here to play.
+      </p>
+      <div class="about-links">
+        <a class="tag" href="https://github.com/ceruleanoak" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="tag" href="/rss.xml">RSS ↗</a>
+        <a class="tag" href="mailto:hello@ceruleanoak.dev">Email ↗</a>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<footer>
+  <span>© cerulean<b>oak</b> · 2026 · one dev, one room</span>
+  <div class="footer-links">
+    <a href="https://github.com/ceruleanoak">GitHub ↗</a>
+    <a href="https://youtube.com/@ceruleanoak">YouTube ↗</a>
+    <a href="https://discord.gg/ceruleanoak">Discord ↗</a>
+    <a href="/rss.xml">RSS ↗</a>
+  </div>
+</footer>
+
+<script type="text/babel">
+  // Mount the pixel oak in the nav
+  ReactDOM.createRoot(document.getElementById('oak-nav')).render(<PixelOak size={22} />);
+
+  // Build the chunky pixel progress bar
+  const total = 24;
+  const filled = Math.round(total * 0.20);
+  const bar = document.getElementById('progress-bar');
+  for (let i = 0; i < total; i++) {
+    const cell = document.createElement('div');
+    if (i < filled) cell.className = 'fill';
+    bar.appendChild(cell);
+  }
+</script>
+
+</body>
+</html>
