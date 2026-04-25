@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CeruleanOak — From the workshop</title>
+    <link>https://ceruleanoak.github.io</link>
+    <description>Devlog posts from CeruleanOak — one developer, small games.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ceruleanoak.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Rewriting the dice combat loop</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>Turns out 7-sided dice break more brains than I expected. Notes on what stuck and what didn&apos;t. [Dice Wars]</description>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2026-04-22-dice-combat</guid>
+    </item>
+
+    <item>
+      <title>Hanafuda rule-editor notes</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>Every household plays koi-koi slightly wrong — and that&apos;s the feature, not the bug. [Hanafuda]</description>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2026-04-14-hanafuda-rules</guid>
+    </item>
+
+    <item>
+      <title>ASCII pathfinding that feels fair</title>
+      <link>https://ceruleanoak.github.io/#workshop</link>
+      <description>A* is correct. It also makes enemies feel psychic. Here&apos;s what I did instead. [Pure Rogue]</description>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2026-03-30-pathfinding</guid>
+    </item>
+
+  </channel>
+</rss>
