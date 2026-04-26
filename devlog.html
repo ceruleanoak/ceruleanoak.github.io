@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="alternate" type="application/rss+xml" title="CeruleanOak — From the workshop" href="/rss.xml">
+<title>Devlog — CeruleanOak</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #f4ead0;
+    --ink: #2a241e;
+    --ink-2: #5e5449;
+    --ink-3: #8d8377;
+    --line: #3d3528;
+    --note: #fbf8f1;
+    --note-yellow: #fff8df;
+    --accent: #c74a24;
+    --canopy: #3fb8b0;
+    --gold: #f3c95a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background: var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(60,50,35,0.10) 1px, transparent 0);
+    background-size: 18px 18px;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  a { color: inherit; }
+
+  /* Topbar */
+  .topbar {
+    background: var(--ink);
+    color: #fbf8f1;
+    padding: 14px 36px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1.5px solid #000;
+  }
+  .lockup {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    letter-spacing: -0.01em; text-decoration: none; color: #fbf8f1;
+  }
+  .lockup b { font-weight: 700; }
+  .nav {
+    display: flex; gap: 22px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: #bfb6a4; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .nav a { text-decoration: none; transition: color .15s; }
+  .nav a:hover { color: var(--gold); }
+  .nav a.active { color: #fbf8f1; }
+
+  /* Layout */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 36px; }
+
+  /* Page header */
+  .page-header {
+    padding: 52px 0 36px;
+    border-bottom: 2px solid var(--line);
+    margin-bottom: 48px;
+  }
+  .page-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 10px;
+  }
+  .page-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic; font-weight: 900;
+    font-size: 52px; line-height: 0.96;
+    letter-spacing: -0.01em; margin: 0 0 16px;
+  }
+  .page-title em { color: var(--accent); }
+  .page-desc {
+    font-size: 15px; color: var(--ink-2); line-height: 1.55;
+    max-width: 560px; margin: 0;
+  }
+  .rss-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 18px;
+    border: 1.2px solid var(--line);
+    background: var(--note);
+    padding: 5px 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    text-decoration: none; color: var(--accent);
+    transition: background .15s;
+  }
+  .rss-pill:hover { background: var(--gold); color: var(--ink); }
+
+  /* Post list */
+  .post-list { display: flex; flex-direction: column; gap: 0; }
+
+  .post-article {
+    background: var(--note);
+    border: 1.5px solid var(--line);
+    border-bottom: none;
+    padding: 36px 40px 40px;
+    scroll-margin-top: 80px;
+  }
+  .post-article:first-child { border-top: 1.5px solid var(--line); }
+  .post-article:last-child { border-bottom: 1.5px solid var(--line); margin-bottom: 64px; }
+  .post-article + .post-article { box-shadow: inset 0 2px 0 rgba(0,0,0,0.04); }
+
+  .post-meta {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  }
+  .post-tag {
+    border: 1.2px solid var(--line);
+    background: var(--paper);
+    padding: 3px 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .post-date {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-3); letter-spacing: 0.06em;
+  }
+  .post-anchor {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-3); text-decoration: none; letter-spacing: 0.06em;
+    opacity: 0; transition: opacity .15s;
+  }
+  .post-article:hover .post-anchor { opacity: 1; }
+  .post-anchor:hover { color: var(--accent); }
+
+  .post-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic; font-weight: 700;
+    font-size: 28px; line-height: 1.15;
+    margin: 0 0 22px; color: var(--ink);
+  }
+
+  /* Article prose */
+  .post-body { font-size: 15px; line-height: 1.7; color: var(--ink-2); }
+  .post-body p { margin: 0 0 16px; }
+  .post-body p:last-child { margin-bottom: 0; }
+  .post-body strong { color: var(--ink); font-weight: 600; }
+  .post-body em { font-style: italic; }
+  .post-body a { color: var(--accent); text-underline-offset: 2px; }
+  .post-body a:hover { color: var(--ink); }
+  .post-body ul {
+    margin: 0 0 16px; padding-left: 22px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .post-body li { color: var(--ink-2); }
+  .post-body code {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 2px;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--ink); color: #bfb6a4;
+    padding: 20px 36px; margin-top: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    border-top: 2px solid #000;
+  }
+  footer b { color: #fbf8f1; font-weight: 700; }
+  footer .footer-links { display: flex; gap: 18px; text-transform: uppercase; letter-spacing: 0.08em; }
+  footer .footer-links a { text-decoration: none; transition: color .15s; }
+  footer .footer-links a:hover { color: var(--gold); }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .topbar { padding: 14px 18px; }
+    .nav { display: none; }
+    .container { padding: 0 18px; }
+    .page-title { font-size: 36px; }
+    .post-article { padding: 24px 22px 28px; }
+    .post-title { font-size: 22px; }
+    footer { flex-direction: column; gap: 10px; padding: 16px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="lockup" href="/">
+    <span>cerulean<b>oak</b></span>
+  </a>
+  <nav class="nav">
+    <a href="/">Games</a>
+    <a href="/devlog.html" class="active">Devlog</a>
+    <a href="/rss.xml">RSS ↗</a>
+  </nav>
+</div>
+
+<main class="container">
+
+  <header class="page-header">
+    <div class="page-kicker">From the workshop</div>
+    <h1 class="page-title">Dev<em>log</em></h1>
+    <p class="page-desc">Progress notes, design thinking, and the occasional side quest. One developer, no schedule.</p>
+    <a class="rss-pill" href="/rss.xml">Subscribe · RSS ↗</a>
+  </header>
+
+  <div class="post-list">
+
+    <article class="post-article" id="ceruleanoak-2026-04-23-v04">
+      <div class="post-meta">
+        <span class="post-tag">Pure Rogue</span>
+        <span class="post-date">Apr 23, 2026</span>
+        <a class="post-anchor" href="#ceruleanoak-2026-04-23-v04">#</a>
+      </div>
+      <h2 class="post-title">v0.4 — Hut Interiors, Dungeons, Full Audio, and a Major AI Overhaul</h2>
+      <div class="post-body">
+        <p>This is the biggest update Pure Rogue has had.</p>
+        <p><strong>Huts now have real interiors.</strong> Walk through the door and an entirely separate room renders in an overlay — with its own physics, combat, enemies, chests, and objects. Everything inside is independent from the exterior. Exit by walking south past the boundary. It sounds like a small detail and it makes the world feel much more like a world.</p>
+        <p><strong>Underground rooms are actual dungeons now.</strong> Navigate between floors using <code>v</code> and <code>^</code>. Each floor has its own generated layout and enemy set. Minable rocks now reliably drop stone, which was a long-standing complaint from the one playtester who is me.</p>
+        <p><strong>Enemies have movement personalities.</strong> This is the one I'm most proud of. Five archetypes:</p>
+        <ul>
+          <li><em>Chaser</em> — direct pursuit, no hesitation</li>
+          <li><em>Keeper</em> — holds a preferred range, punishes players who rush in</li>
+          <li><em>Kiter</em> — circle-strafes and times its attack rushes</li>
+          <li><em>Jumper</em> — discrete zigzag lunges, erratic and hard to predict</li>
+          <li><em>Ambusher</em> — stationary until you get too close, then an explosive burst</li>
+        </ul>
+        <p>Each zone has a personality profile that draws from the archetypes that fit its character. Fighting in Cyan feels different from fighting in Red — not just because the enemies look different, but because they move differently. That's the thing I was aiming for.</p>
+        <p><strong>Zone-aware spawning</strong> is in. Green, Red, Cyan, Yellow, and Gray each have tiered enemy tables that scale with depth. No more generic bleed between zones.</p>
+        <p><strong>Audio is fully layered now.</strong> Dynamic music with layers that respond to game state, plus SFX for aggro, blade attacks, bow charge, dodge roll, item destruction, and player death.</p>
+        <p>Lots of bug fixes too. <a href="https://ceruleanoak.github.io/ascii-roguelike/" target="_blank" rel="noopener">Play it here.</a></p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2026-03-22-v03-boss-sound">
+      <div class="post-meta">
+        <span class="post-tag">Pure Rogue</span>
+        <span class="post-date">Mar 22, 2026</span>
+        <a class="post-anchor" href="#ceruleanoak-2026-03-22-v03-boss-sound">#</a>
+      </div>
+      <h2 class="post-title">v0.3, a First Boss, and Two Instruments</h2>
+      <div class="post-body">
+        <p>March was a big month for Pure Rogue.</p>
+        <p><strong>v0.3 shipped</strong> with dynamic music, unlockable characters (find captive heroes to extend and enhance your run), themed zones with distinct enemy rosters, discoverable secrets, a reworked crafting menu, and a balance pass across items and probabilities. The kind of update that changes what the game feels like to play, not just what's in it.</p>
+        <p>Then I coded my first boss. It felt great. Some things are immediately fun to build, and that was one of them — I'll leave the details for when you find it.</p>
+        <p>The sound design is worth talking about separately. I gave myself a hard constraint going in: <strong>two instruments only</strong>. Square wave and noise.</p>
+        <p>Square wave has no dynamics — no louder, no softer — so all the expressiveness has to come from duration and pitch. Short notes read as quieter. Low tones recede into the background. The only way to add complexity is to layer, so the green zone battle music is three discordant low square waves stacked on each other. It makes a guttural, churning sound that somehow never overstays its welcome.</p>
+        <p>Noise is technically cheating. Noise can do almost anything. But it's what makes weapon SFX feel physical and percussive instead of just tonal, so I'm allowing it and pretending I'm not.</p>
+        <p>Each colored zone is supposed to feel musically distinct. I have green down. The others are still developing. I'm waiting for the right ideas rather than filling the space with obvious ones. The constraint is useful that way too: it slows you down enough to be patient.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2026-02-24-dicewars-purerogue">
+      <div class="post-meta">
+        <span class="post-tag">Devlog</span>
+        <span class="post-date">Feb 24, 2026</span>
+        <a class="post-anchor" href="#ceruleanoak-2026-02-24-dicewars-purerogue">#</a>
+      </div>
+      <h2 class="post-title">Got Distracted by DiceWars. Also Shipped Pure Rogue.</h2>
+      <div class="post-body">
+        <p>I've been playing DiceWars since at least 2008. It's a browser game — territory control, dice mechanics, Risk without the three-hour commitment. Simple, fast, genuinely tactical. It's also open source, and there are a handful of things about it that have always bothered me: the animations are slow, the audio is intrusive, the pacing drags in ways that have nothing to do with the strategy.</p>
+        <p>In February I finally fixed it. Stripped the animations, reworked the pacing, removed the sound effects, and shipped a version I'd actually want to play. It lives at <a href="https://ceruleanoak.github.io/dicewars/reloaded/" target="_blank" rel="noopener">ceruleanoak.github.io/dicewars/reloaded</a> and it took about a week. Sometimes the distractions are the work.</p>
+        <p>Then — because apparently February had energy to spare — I formally published <strong>Pure Rogue v0.2</strong>. The ASCII roguelike I'd been building in parallel, the one I'd posted a demo of in a YouTube short. It's real now. You can play it, die in it, and wonder why you went north when you clearly should have gone west.</p>
+        <p>v0.2 is a foundation: real-time combat, procedural rooms, crafting with hidden recipes, multiple enemy types, the dual REST/EXPLORE loop. Not everything I want it to be, but everything it needs to be to be a game. The plan from here is content and feel — more enemies, more weapons, more reasons to push deeper than you probably should.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2026-01-18-migration-progress">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Jan 18, 2026</span>
+        <a class="post-anchor" href="#ceruleanoak-2026-01-18-migration-progress">#</a>
+      </div>
+      <h2 class="post-title">Closing In on Full Migration</h2>
+      <div class="post-body">
+        <p>January was heads-down work that doesn't make for exciting updates. The kind of progress that matters but doesn't photograph well.</p>
+        <p>Collisions are finalized. Camera is dialed in. Saving and loading are confirmed working with a player-facing menu — replacing the old designer-only version that had no business being seen by anyone. The foundation is stable.</p>
+        <p>What's left is platforms (with real physics) and enemies. Enemies are the game's entire variety beyond room layouts. They're what makes each run feel different, what forces improvisation, what creates the moments players remember and describe to other people. So this isn't the boring part left over. It's the most interesting part, deferred until the architecture was solid enough to hold it.</p>
+        <p>I've also been studying. C++ has a learning curve that GameMaker's scripting language doesn't, and I'd rather understand the language I'm working in than reverse-engineer my own code six months from now. Slows things down short-term. Worth it.</p>
+        <p>Getting close to something I can actually call a game again.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2025-12-30-cpp-engine">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Dec 30, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-12-30-cpp-engine">#</a>
+      </div>
+      <h2 class="post-title">The C++ Engine Runs Crisp (The Player Is Technically Present)</h2>
+      <div class="post-body">
+        <p>The bugs that used to haunt me in GameMaker are gone.</p>
+        <p>I want to say that again because it felt genuinely surprising: the engine is running, the collisions work, and the weird persistent glitches I'd been working around for months have just stopped. Because I own every layer now. There's no platform making decisions I can't see or override.</p>
+        <p>The player is technically invisible — no sprite work done yet, just a hitbox moving around a tile grid — but the behavior is correct and the framerate is what I wanted. <strong>Nearest-neighbor scaling is fixed</strong>, which sounds minor and is everything for pixel art. The old version was blurring the low-res textures. Now they're sharp. The render order is properly 3D.</p>
+        <p>I spent a while just moving a ghost player through rooms watching the collision detection behave exactly as intended. This is hard to explain to someone who hasn't done it: the specific satisfaction of invisible infrastructure working correctly. No visual feedback, just numbers doing what they're supposed to do. It was a hallelujah moment.</p>
+        <p>End-of-month status: player object, controls, grid rendering, room layouts, textures, debug layer, render layers, camera (mostly), collision detection, saving and loading all done. Platforms and enemies are what's left. Those are the hard parts. They're also the fun parts.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2025-11-30-hanafuda-cpp">
+      <div class="post-meta">
+        <span class="post-tag">Devlog</span>
+        <span class="post-date">Nov 30, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-11-30-hanafuda-cpp">#</a>
+      </div>
+      <h2 class="post-title">Hanafuda Ships. GameMaker Gets a Farewell.</h2>
+      <div class="post-body">
+        <p>Two things happened in November that felt like bookends.</p>
+        <p>First: <strong>Hanafuda shipped.</strong> A full visual rebuild, two new game modes — Sakura (2–4 player) and Koi Koi Shop, an original mode built around the game's scoring system — plus support for custom card back graphics. It started as a way to play koi-koi with friends who didn't own the physical cards. It became a proper thing: configurable rules, multiple regional variants, persistent settings. <a href="https://ceruleanoak.github.io/hanafuda/" target="_blank" rel="noopener">It's live.</a></p>
+        <p>Second: I said goodbye to GameMaker.</p>
+        <p>The farewell wasn't dramatic. I set up a C++ project with SDL2 and OpenGL, ran it, watched the terminal print <code>PENUMBRA initialized successfully</code>, and that was that. The new setup does nothing yet — there's a window, a shader that compiles cleanly, and a quit command. But that's also exactly where real things begin: not with features, but with a clean surface you built yourself.</p>
+        <p>GameMaker got me to a prototype. It got me through years of learning. It is not the right tool for an isometric engine with custom rendering, and I knew that going in, and I stayed anyway because starting over is hard. November was when I stopped staying.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2025-10-01-gamemaker-verdict">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Oct 1, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-10-01-gamemaker-verdict">#</a>
+      </div>
+      <h2 class="post-title">The Jury Is In on GameMaker</h2>
+      <div class="post-body">
+        <p>I've been in deliberations with myself about GameMaker for a while. October is when the verdict came in.</p>
+        <p>GameMaker is a good tool. It's a particularly good tool if your game fits neatly inside the assumptions it was built around — tile-based 2D, sprite-driven, event-based logic, GML as your scripting layer. For a lot of games, that's everything you need and the tradeoffs are worthwhile.</p>
+        <p>Penumbra is an isometric game with a custom camera system, a rendering pipeline I need full control over, and systems that have grown to the point where the platform is doing less and less of the work and resisting me more and more. My camera system hit 3,000 lines. That's not a GameMaker problem, exactly — that's a me problem — but GameMaker made it harder to fix than it needed to be.</p>
+        <p>The transition options are JavaScript, Python, or C++. JavaScript is where I'm most fluent. Python has the ergonomics but not the performance profile I want for a real-time game. C++ is the hard choice and the right one for what Penumbra actually needs: direct memory control, genuine performance headroom, and the GLSL shader pipeline I've been wanting to use properly.</p>
+        <p>I don't regret the time in GameMaker. The prototype exists because of it. But this is where the project outgrows the training wheels, and they have to come off.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2025-09-02-personal-server">
+      <div class="post-meta">
+        <span class="post-tag">Devlog</span>
+        <span class="post-date">Sep 2, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-09-02-personal-server">#</a>
+      </div>
+      <h2 class="post-title">I Built My Own WaniKani Instead of Working on the Game</h2>
+      <div class="post-body">
+        <p>WaniKani, if you're not familiar, is a web app for learning Japanese kanji through spaced repetition. It's well-designed, it works, and it's a subscription cloud service — which means your progress lives on someone else's server, billed monthly, inaccessible if the service goes down or goes away.</p>
+        <p>That bothers me more than it probably should. So in September, instead of working on the game, I built a replacement.</p>
+        <p>The system uses SMTP to send scheduled emails — review sessions, quiz cards, progress reports — all generated and delivered by my home server on a schedule I control. The review intervals are adaptive. The progress data is mine. There's no dashboard, no mobile app, no account recovery flow, because I don't need any of that. I need flashcards in my inbox at 7am.</p>
+        <p>This is stage two of what I'm calling the off-grid plan: moving my personal infrastructure — goals, habits, language study, exercise and diet tracking — away from cloud services entirely. It sounds like a lot of work for something I could just pay $10/month for. It is a lot of work. I find it satisfying in the same way I find game development satisfying: building something that does exactly what you need and nothing else.</p>
+        <p>The game prototype is still going, for the record. The core system is solid. I just want to give it another month of content before I let anyone else near it.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2025-08-30-camera-refactor">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Aug 30, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-08-30-camera-refactor">#</a>
+      </div>
+      <h2 class="post-title">Refactoring a 3,000-Line Camera and Regaining the Will to Live</h2>
+      <div class="post-body">
+        <p>At some point my camera system quietly became 3,000 lines long. I don't entirely know how. You add a feature, you add an edge case, you solve a bug with a function instead of a fix, and eventually you look at the file and it has stopped being a camera system and started being a liability.</p>
+        <p>August was the anti-trust breakup: splitting it into something manageable, tracing every dependency, confirming the game still runs afterward. It does. The code is better. I didn't ship anything new during this time, which is the cost of refactoring — you spend weeks getting back to where you started, except the foundation is cleaner and won't fight you next time.</p>
+        <p>Whether it was worth it: genuinely unclear. The prototype is playable and the core system is solid. I'd like to give it another month before I put it in front of anyone else.</p>
+        <p>In more exciting news: I have a server again. It has been almost fifteen years since I had one — adulthood has a way of stripping away the infrastructure you had when you had more time than money. The server is small, it lives in my house, and it means I can run Python scripts remotely from my laptop whenever I want. This is the beginning of something larger, though I'm not entirely sure what yet.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2023-11-30-origin">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Nov 30, 2023</span>
+        <a class="post-anchor" href="#ceruleanoak-2023-11-30-origin">#</a>
+      </div>
+      <h2 class="post-title">The Part Where I Decided to Make My Own Chrono Trigger</h2>
+      <div class="post-body">
+        <p>There's a thing that happens when you're an adult with responsibilities and you sit down to make the game you always wanted to make as a kid. You realize immediately that twelve-year-old you had no idea how long this would take. You do it anyway.</p>
+        <p>That's where this started. November 2023, GameMaker, a blank project, and an idea for a game set in a citadel full of puzzle rooms run by robots and a master AI. You rescue characters who become playable — each with different abilities — and losing them sends you back to clear rooms you'd already bypassed. A game that plays differently every time, rewards both caution and recklessness, and asks the player to decide whether they're ready for a room before they enter it.</p>
+        <p>The prototype that month got further than I expected. Collision detection working. Room switching. Enemy detection and stealth. Fake 3D elevation — a layer-switching system so certain characters could access underground paths. Character swapping with different attributes. Not bad for a first run.</p>
+        <p>The game is called Penumbra. It's been in development since then, in the margins of a full-time job and raising three kids — which makes some people say "I don't know how you find the time" and other people say "you probably shouldn't." Both are correct. But twelve-year-old me wanted to make a Chrono Trigger, and here we are.</p>
+        <p>Everything on this site came out of that first month. The roguelike, the card game, the strategy mod — all of it is a side effect of sitting down and refusing to not make something.</p>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <span>© cerulean<b>oak</b> · 2026 · one dev, one room</span>
+  <div class="footer-links">
+    <a href="https://github.com/ceruleanoak">GitHub ↗</a>
+    <a href="https://youtube.com/@ceruleanoak">YouTube ↗</a>
+    <a href="https://discord.gg/XNNFDNB54r">Discord ↗</a>
+    <a href="/rss.xml">RSS ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
