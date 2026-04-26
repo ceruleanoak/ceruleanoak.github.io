@@ -35,7 +35,6 @@
   }
   a { color: inherit; }
 
-  /* Topbar */
   .topbar {
     background: var(--ink);
     color: #fbf8f1;
@@ -58,10 +57,8 @@
   .nav a:hover { color: var(--gold); }
   .nav a.active { color: #fbf8f1; }
 
-  /* Layout */
   .container { max-width: 780px; margin: 0 auto; padding: 0 36px; }
 
-  /* Page header */
   .page-header {
     padding: 52px 0 36px;
     border-bottom: 2px solid var(--line);
@@ -96,8 +93,7 @@
   }
   .rss-pill:hover { background: var(--gold); color: var(--ink); }
 
-  /* Post list */
-  .post-list { display: flex; flex-direction: column; gap: 0; }
+  .post-list { display: flex; flex-direction: column; }
 
   .post-article {
     background: var(--note);
@@ -106,7 +102,6 @@
     padding: 36px 40px 40px;
     scroll-margin-top: 80px;
   }
-  .post-article:first-child { border-top: 1.5px solid var(--line); }
   .post-article:last-child { border-bottom: 1.5px solid var(--line); margin-bottom: 64px; }
   .post-article + .post-article { box-shadow: inset 0 2px 0 rgba(0,0,0,0.04); }
 
@@ -140,7 +135,6 @@
     margin: 0 0 22px; color: var(--ink);
   }
 
-  /* Article prose */
   .post-body { font-size: 15px; line-height: 1.7; color: var(--ink-2); }
   .post-body p { margin: 0 0 16px; }
   .post-body p:last-child { margin-bottom: 0; }
@@ -157,11 +151,15 @@
     font-family: 'JetBrains Mono', monospace; font-size: 13px;
     background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 2px;
   }
+  .post-body blockquote {
+    border-left: 3px solid var(--line);
+    margin: 0 0 16px; padding: 4px 0 4px 18px;
+    color: var(--ink-3); font-style: italic;
+  }
 
-  /* Footer */
   footer {
     background: var(--ink); color: #bfb6a4;
-    padding: 20px 36px; margin-top: 0;
+    padding: 20px 36px;
     display: flex; justify-content: space-between; align-items: center;
     font-family: 'JetBrains Mono', monospace; font-size: 11px;
     border-top: 2px solid #000;
@@ -171,7 +169,6 @@
   footer .footer-links a { text-decoration: none; transition: color .15s; }
   footer .footer-links a:hover { color: var(--gold); }
 
-  /* Mobile */
   @media (max-width: 640px) {
     .topbar { padding: 14px 18px; }
     .nav { display: none; }
@@ -207,6 +204,7 @@
 
   <div class="post-list">
 
+    <!-- ═══════════════════════════════════════════════════════ APR 2026 -->
     <article class="post-article" id="ceruleanoak-2026-04-23-v04">
       <div class="post-meta">
         <span class="post-tag">Pure Rogue</span>
@@ -233,6 +231,7 @@
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ MAR 2026 -->
     <article class="post-article" id="ceruleanoak-2026-03-22-v03-boss-sound">
       <div class="post-meta">
         <span class="post-tag">Pure Rogue</span>
@@ -251,6 +250,7 @@
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ FEB 2026 -->
     <article class="post-article" id="ceruleanoak-2026-02-24-dicewars-purerogue">
       <div class="post-meta">
         <span class="post-tag">Devlog</span>
@@ -261,11 +261,12 @@
       <div class="post-body">
         <p>I've been playing DiceWars since at least 2008. It's a browser game — territory control, dice mechanics, Risk without the three-hour commitment. Simple, fast, genuinely tactical. It's also open source, and there are a handful of things about it that have always bothered me: the animations are slow, the audio is intrusive, the pacing drags in ways that have nothing to do with the strategy.</p>
         <p>In February I finally fixed it. Stripped the animations, reworked the pacing, removed the sound effects, and shipped a version I'd actually want to play. It lives at <a href="https://ceruleanoak.github.io/dicewars/reloaded/" target="_blank" rel="noopener">ceruleanoak.github.io/dicewars/reloaded</a> and it took about a week. Sometimes the distractions are the work.</p>
-        <p>Then — because apparently February had energy to spare — I formally published <strong>Pure Rogue v0.2</strong>. The ASCII roguelike I'd been building in parallel, the one I'd posted a demo of in a YouTube short. It's real now. You can play it, die in it, and wonder why you went north when you clearly should have gone west.</p>
+        <p>Then — because apparently February had energy to spare — I formally published <strong>Pure Rogue v0.2</strong>. The ASCII roguelike I'd been building in parallel, the one I posted a demo of in a YouTube short. It's real now. You can play it, die in it, and wonder why you went north when you clearly should have gone west.</p>
         <p>v0.2 is a foundation: real-time combat, procedural rooms, crafting with hidden recipes, multiple enemy types, the dual REST/EXPLORE loop. Not everything I want it to be, but everything it needs to be to be a game. The plan from here is content and feel — more enemies, more weapons, more reasons to push deeper than you probably should.</p>
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ JAN 2026 -->
     <article class="post-article" id="ceruleanoak-2026-01-18-migration-progress">
       <div class="post-meta">
         <span class="post-tag">Penumbra</span>
@@ -282,6 +283,7 @@
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ DEC 2025 -->
     <article class="post-article" id="ceruleanoak-2025-12-30-cpp-engine">
       <div class="post-meta">
         <span class="post-tag">Penumbra</span>
@@ -298,6 +300,7 @@
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ NOV 2025 -->
     <article class="post-article" id="ceruleanoak-2025-11-30-hanafuda-cpp">
       <div class="post-meta">
         <span class="post-tag">Devlog</span>
@@ -314,6 +317,7 @@
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ OCT 2025 -->
     <article class="post-article" id="ceruleanoak-2025-10-01-gamemaker-verdict">
       <div class="post-meta">
         <span class="post-tag">Penumbra</span>
@@ -330,6 +334,7 @@
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ SEP 2025 -->
     <article class="post-article" id="ceruleanoak-2025-09-02-personal-server">
       <div class="post-meta">
         <span class="post-tag">Devlog</span>
@@ -346,21 +351,75 @@
       </div>
     </article>
 
-    <article class="post-article" id="ceruleanoak-2025-08-30-camera-refactor">
+    <!-- ═══════════════════════════════════════════════════════ AUG 2025 -->
+    <article class="post-article" id="ceruleanoak-2025-08-03-fifteen-years">
       <div class="post-meta">
-        <span class="post-tag">Penumbra</span>
-        <span class="post-date">Aug 30, 2025</span>
-        <a class="post-anchor" href="#ceruleanoak-2025-08-30-camera-refactor">#</a>
+        <span class="post-tag">Devlog</span>
+        <span class="post-date">Aug 3, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-08-03-fifteen-years">#</a>
       </div>
-      <h2 class="post-title">Refactoring a 3,000-Line Camera and Regaining the Will to Live</h2>
+      <h2 class="post-title">Fifteen Years of Not Being a Programmer, Then This</h2>
       <div class="post-body">
-        <p>At some point my camera system quietly became 3,000 lines long. I don't entirely know how. You add a feature, you add an edge case, you solve a bug with a function instead of a fix, and eventually you look at the file and it has stopped being a camera system and started being a liability.</p>
-        <p>August was the anti-trust breakup: splitting it into something manageable, tracing every dependency, confirming the game still runs afterward. It does. The code is better. I didn't ship anything new during this time, which is the cost of refactoring — you spend weeks getting back to where you started, except the foundation is cleaner and won't fight you next time.</p>
-        <p>Whether it was worth it: genuinely unclear. The prototype is playable and the core system is solid. I'd like to give it another month before I put it in front of anyone else.</p>
-        <p>In more exciting news: I have a server again. It has been almost fifteen years since I had one — adulthood has a way of stripping away the infrastructure you had when you had more time than money. The server is small, it lives in my house, and it means I can run Python scripts remotely from my laptop whenever I want. This is the beginning of something larger, though I'm not entirely sure what yet.</p>
+        <p>I want to take a moment to acknowledge something, because it keeps catching me off guard.</p>
+        <p>Two years ago, I was not a programmer. I'd been designing games my entire life — sketching mechanics, building paper prototypes, obsessing over systems — but I always relied on other people's tools. GameMaker. Scratch. Unity before I bounced off it. I never actually learned to code. I told myself I wasn't a programmer person. I pussyfooted around it for fifteen years.</p>
+        <p>Now I'm building repos, publishing games, configuring MCP servers and APIs, managing a project backlog in Airtable, running a home server that emails me Japanese flashcards on a schedule. I moved my entire Penumbra workflow out of the GameMaker IDE and into VS Code this week, with GitHub wired up for permanent version control. None of this is exotic — working developers do all of it — but two years ago it was completely outside my world.</p>
+        <p>I want to be direct about what made the difference: generative AI. Not as a crutch, not as a shortcut, but as the thing that finally made the gap between "I know what I want to build" and "I know how to build it" crossable. I've made three game prototypes, two unfinished jam projects, and a pile of experiments. I've become, in a real and functional sense, a programmer.</p>
+        <p>12-year-old me wanted to make his own Chrono Trigger. I have a full-time job and raise three kids. It's crazy. And it's happening.</p>
+        <p>Also: the camera system is now 3,000 lines long and I just broke it into pieces. The code is more manageable. Whether it was worth the refactor effort is genuinely unclear. We have a home server now after 15 years. Progress continues on all fronts.</p>
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ JUL 2025 -->
+    <article class="post-article" id="ceruleanoak-2025-07-27-clown-fiesta">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Jul 27, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-07-27-clown-fiesta">#</a>
+      </div>
+      <h2 class="post-title">Enemies Exist. Also: Clown Fiesta.</h2>
+      <div class="post-body">
+        <p>The enemy system has been railed and derailed a few times. I'd rather show enemies off when they're both pretty and fully fledged, so I've been holding back. But I can at least report on what exists: enemies are in. They can push each other around. They can damage the player. They can bounce in an arc. They can travel in paths or in a set direction. The building blocks are there.</p>
+        <p>This week I ran a stress test — more objects in a single room than I would ever actually put in the game — and the results were what I'd call a clown fiesta. Platforms bouncing everything everywhere, coins getting pushed across the floor by moving geometry, enemies getting stuck in unlikely pile-ups. Performance was completely fine, which is the important part. Collisions between the player, enemies, platforms, and coins are all working. The render order, however, is visually out of control.</p>
+        <p>The render order problem is an inherent challenge in isometric games and I've been putting it off. Isometric is 2D — there's no real depth, no draw distance, no 3D vector positions. Everything you see is an illusion maintained by careful layering. When you have moving objects at different heights all overlapping each other, deciding which one draws on top requires constant recalculation. I have an idea for an elegant solution, and it is definitely crazy, which means I have to try it.</p>
+        <p>Someone in the server compared it to FEZ, which I'll take. There's a whole lost generation of isometric games I wasn't even aware of before starting this project. The perspective is genuinely interesting — it lends itself to claustrophobia and a kind of spatial ambiguity that flat 2D doesn't have. I'm starting to understand why people built entire careers around it.</p>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════════════════ MAY 2025 -->
+    <article class="post-article" id="ceruleanoak-2025-05-25-render-pipeline">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">May 25, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-05-25-render-pipeline">#</a>
+      </div>
+      <h2 class="post-title">Why Render Order Is the Hardest Problem in an Isometric Game</h2>
+      <div class="post-body">
+        <p>This month had a milestone I want to actually explain, because "fixed the rendering pipeline" doesn't convey why it matters.</p>
+        <p>Isometric is 2D. The sense of depth — objects in front of and behind each other, height differences, layered floors — is entirely an illusion maintained by the order in which things are drawn. There is no 3D engine handling it. Every frame, the game has to decide: when this platform moves, when the player walks, when an object changes position, what order do I draw everything so the result looks spatially correct?</p>
+        <p>I completely overhauled how the game handles this. Now, anytime an object moves, the engine recalculates draw order for everything affected. The player always renders on top of the floor. Platforms that are elevated render above platforms that aren't. It handles edge cases that previously looked wrong. It's not a flashy change — you'd only notice if it were broken — but it's one of the foundational pieces the rest of the game is built on.</p>
+        <p>Also new this month: a coin spill mechanic. Take damage or fall too far and your coins scatter — retrievable, but at the cost of a moment of vulnerability. It's the kind of mechanic that sounds simple and does a lot of work: it makes damage feel consequential without ending your run, and it creates those scramble moments where you have to decide whether the coins are worth the risk of staying exposed.</p>
+        <p>Sprites are in progress. Walls are in. The prototype is starting to look like something a human could actually play.</p>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════════════════ APR 2025 -->
+    <article class="post-article" id="ceruleanoak-2025-04-13-sprites-mechanics">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Apr 13, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-04-13-sprites-mechanics">#</a>
+      </div>
+      <h2 class="post-title">Now I Have to Learn Aseprite</h2>
+      <div class="post-body">
+        <p>A few things came together this month that make the prototype feel significantly more like a game.</p>
+        <p>Tile type selection is now in the editor menu, which makes building rooms much faster. More importantly: <strong>landing and crashing</strong> is in. Fall too far and you'll pay for it — the mechanic punishes careless navigation without being punishing in a way that stops being fun. Getting the feel right took some tuning, but it's there.</p>
+        <p>Half-height tile differences are also supported now. This sounds like a small thing and it does a lot: varying the height of surfaces increases visual interest and gives the player more navigation options without adding complexity to the systems underneath. A room with only flat floors reads as flat. A room with a few half-steps becomes a space you actually want to explore.</p>
+        <p>Room transitions are cleaned up and looking good. The moment of moving between rooms is now smooth enough that I don't need to think about it — which is the bar for that kind of thing.</p>
+        <p>Next up: sprites. The placeholder art has been getting the job done, but it's time to actually learn Aseprite and stop being jank about it.</p>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════════════════ NOV 2023 -->
     <article class="post-article" id="ceruleanoak-2023-11-30-origin">
       <div class="post-meta">
         <span class="post-tag">Penumbra</span>
@@ -371,8 +430,8 @@
       <div class="post-body">
         <p>There's a thing that happens when you're an adult with responsibilities and you sit down to make the game you always wanted to make as a kid. You realize immediately that twelve-year-old you had no idea how long this would take. You do it anyway.</p>
         <p>That's where this started. November 2023, GameMaker, a blank project, and an idea for a game set in a citadel full of puzzle rooms run by robots and a master AI. You rescue characters who become playable — each with different abilities — and losing them sends you back to clear rooms you'd already bypassed. A game that plays differently every time, rewards both caution and recklessness, and asks the player to decide whether they're ready for a room before they enter it.</p>
-        <p>The prototype that month got further than I expected. Collision detection working. Room switching. Enemy detection and stealth. Fake 3D elevation — a layer-switching system so certain characters could access underground paths. Character swapping with different attributes. Not bad for a first run.</p>
-        <p>The game is called Penumbra. It's been in development since then, in the margins of a full-time job and raising three kids — which makes some people say "I don't know how you find the time" and other people say "you probably shouldn't." Both are correct. But twelve-year-old me wanted to make a Chrono Trigger, and here we are.</p>
+        <p>The first month got further than I expected. Collision detection working. Room switching. Enemy detection and stealth. Fake 3D elevation — a layer-switching system so certain characters can access underground paths. Character swapping with different stats. The "digger" character concept: access underground tunnels in dirt areas, hide from enemies, slip under fences. Areas of a room that only specific characters can reach. The push and pull of choosing whether to risk losing a character on a room you might not be equipped for.</p>
+        <p>The game is called Penumbra. It's being built in the margins of a full-time job and raising three kids — which makes some people say "I don't know how you find the time" and others say "you probably shouldn't." Both are correct.</p>
         <p>Everything on this site came out of that first month. The roguelike, the card game, the strategy mod — all of it is a side effect of sitting down and refusing to not make something.</p>
       </div>
     </article>

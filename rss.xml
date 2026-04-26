@@ -13,55 +13,19 @@
     <item>
       <title>v0.4 — Hut Interiors, Dungeons, Full Audio, and a Major AI Overhaul</title>
       <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2026-04-23-v04</link>
-      <description>The biggest Pure Rogue update yet. Enemies have movement personalities, huts have real interiors, and each zone now has its own enemy roster that scales with depth.</description>
+      <description>The biggest Pure Rogue update yet: enemy movement archetypes, real hut interiors, proper dungeon floors, zone-aware spawning, and full layered audio.</description>
       <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2026-04-23-v04</guid>
-      <content:encoded><![CDATA[
-        <p>This is the biggest update Pure Rogue has had.</p>
-
-        <p><strong>Huts now have real interiors.</strong> Walk through the door and an entirely separate room renders in an overlay — with its own physics, combat, enemies, chests, and objects. Everything inside is independent from the exterior. Exit by walking south past the boundary. It sounds like a small detail and it makes the world feel much more like a world.</p>
-
-        <p><strong>Underground rooms are actual dungeons now.</strong> Navigate between floors using <code>v</code> and <code>^</code>. Each floor has its own generated layout and enemy set. Minable rocks now reliably drop stone, which was a long-standing complaint from the one playtester who is me.</p>
-
-        <p><strong>Enemies have movement personalities.</strong> This is the one I'm most proud of. Five archetypes:</p>
-        <ul>
-          <li><em>Chaser</em> — direct pursuit, no hesitation</li>
-          <li><em>Keeper</em> — holds a preferred range, punishes players who rush in</li>
-          <li><em>Kiter</em> — circle-strafes and times its attack rushes</li>
-          <li><em>Jumper</em> — discrete zigzag lunges, erratic and hard to predict</li>
-          <li><em>Ambusher</em> — stationary until you get too close, then an explosive burst</li>
-        </ul>
-        <p>Each zone has a personality profile that draws from the archetypes that fit its character. Fighting in Cyan feels different from fighting in Red — not just because the enemies look different, but because they move differently. That's the thing I was aiming for.</p>
-
-        <p><strong>Zone-aware spawning</strong> is in. Green, Red, Cyan, Yellow, and Gray each have tiered enemy tables that scale with depth. No more generic bleed between zones.</p>
-
-        <p><strong>Audio is fully layered now.</strong> Dynamic music with layers that respond to game state, plus SFX for: aggro, blade attacks, bow charge, dodge roll, item destruction, and player death.</p>
-
-        <p>Lots of bug fixes too. Play it at <a href="https://ceruleanoak.github.io/ascii-roguelike/">ceruleanoak.github.io/ascii-roguelike</a>.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>This is the biggest update Pure Rogue has had.</p><p><strong>Huts now have real interiors.</strong> Walk through the door and an entirely separate room renders in an overlay — with its own physics, combat, enemies, chests, and objects. Everything inside is independent from the exterior. Exit by walking south past the boundary.</p><p><strong>Enemies have movement personalities.</strong> Five archetypes: Chaser (direct pursuit), Keeper (holds range, punishes rush-ins), Kiter (circle-strafes and times attack rushes), Jumper (discrete zigzag lunges), Ambusher (stationary until triggered, then an explosive burst). Each zone has a personality profile that draws from the archetypes that fit its character.</p><p><strong>Zone-aware spawning</strong> is in. Green, Red, Cyan, Yellow, and Gray each have tiered enemy tables that scale with depth. No more generic bleed between zones.</p><p><strong>Audio is fully layered now.</strong> Dynamic music with layers that respond to game state, plus SFX for aggro, blade attacks, bow charge, dodge roll, item destruction, and player death.</p><p><a href="https://ceruleanoak.github.io/ascii-roguelike/">Play it here.</a></p>]]></content:encoded>
     </item>
 
     <item>
       <title>v0.3, a First Boss, and Two Instruments</title>
       <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2026-03-22-v03-boss-sound</link>
-      <description>Dynamic music is in, the first boss is coded, and the sound design constraint — two instruments only — is turning out to be the right call.</description>
+      <description>Dynamic music is in, the first boss is coded, and the sound design constraint — square wave and noise only — is turning out to be the right call.</description>
       <pubDate>Sat, 22 Mar 2026 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2026-03-22-v03-boss-sound</guid>
-      <content:encoded><![CDATA[
-        <p>March was a big month for Pure Rogue.</p>
-
-        <p><strong>v0.3 shipped</strong> with dynamic music, unlockable characters (find captive heroes to extend and enhance your run), themed zones with distinct enemy rosters, discoverable secrets, a reworked crafting menu, and a balance pass across items and probabilities. The kind of update that changes what the game feels like to play, not just what's in it.</p>
-
-        <p>Then I coded my first boss. It felt great. Some things are immediately fun to build, and that was one of them — I'll leave it at that for now.</p>
-
-        <p>The sound design is worth talking about. I gave myself a hard constraint going in: <strong>two instruments only</strong>. Square wave and noise.</p>
-
-        <p>Square wave has no dynamics — no louder, no softer — so all the expressiveness has to come from duration and pitch. Short notes read as quieter. Low tones recede into the background. The only way to add complexity is to layer, so the green zone battle music is three discordant low square waves stacked on each other. It makes a guttural, churning sound that somehow never overstays its welcome.</p>
-
-        <p>Noise is technically cheating. Noise can do almost anything. But it's what makes weapon SFX feel physical and percussive instead of just tonal, so I'm allowing it and pretending I'm not.</p>
-
-        <p>Each colored zone is supposed to feel distinct — musically and behaviorally. I have green down. The others are still developing. I'm waiting for the right ideas rather than filling the space with obvious ones. The constraint is useful that way too: it slows you down enough to be patient.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>March was a big month for Pure Rogue. v0.3 shipped with dynamic music, unlockable characters, themed zones, discoverable secrets, a reworked crafting menu, and a balance pass. Then I coded my first boss. It felt great.</p><p>The sound design constraint: two instruments only. Square wave and noise. Square wave has no dynamics, so everything comes from duration and pitch. The only way to add complexity is to layer — the green zone music is three discordant low square waves stacked on each other. Guttural. Never overstays its welcome. Noise is technically cheating but it's what makes weapon SFX feel physical, so I'm allowing it.</p>]]></content:encoded>
     </item>
 
     <item>
@@ -70,15 +34,7 @@
       <description>Fixed an old web game I've wasted too many hours on. Then shipped Pure Rogue v0.2 in the same month. Turns out distraction and productivity aren't mutually exclusive.</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2026-02-24-dicewars-purerogue</guid>
-      <content:encoded><![CDATA[
-        <p>I've been playing DiceWars since at least 2008. It's a browser game — territory control, dice mechanics, Risk without the three-hour commitment. Simple, fast, genuinely tactical. It's also open source, and there are a handful of things about it that have always bothered me: the animations are slow, the audio is intrusive, the pacing drags in ways that have nothing to do with the strategy.</p>
-
-        <p>In February I finally fixed it. Stripped the animations, reworked the pacing, removed the sound effects, and shipped a version I'd actually want to play. It lives at <a href="https://ceruleanoak.github.io/dicewars/reloaded/">ceruleanoak.github.io/dicewars/reloaded</a> and it took about a week. Sometimes the distractions are the work.</p>
-
-        <p>Then — because apparently February had energy to spare — I formally published <strong>Pure Rogue v0.2</strong>. The ASCII roguelike I'd been building in parallel, the one I'd posted a demo of in a YouTube short. It's real now. You can play it, die in it, and wonder why you went north when you clearly should have gone west.</p>
-
-        <p>v0.2 is a foundation: real-time combat, procedural rooms, crafting with hidden recipes, multiple enemy types, the dual REST/EXPLORE loop. Not everything I want it to be, but everything it needs to be to be a game. The plan from here is content and feel — more enemies, more weapons, more reasons to push deeper than you probably should.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>I've been playing DiceWars since at least 2008 — territory control, dice mechanics, Risk without the three-hour commitment. It's open source, and there are things about it that have always bothered me. In February I finally fixed them: stripped the animations, reworked the pacing, removed the audio. <a href="https://ceruleanoak.github.io/dicewars/reloaded/">It lives here.</a></p><p>Then I formally published Pure Rogue v0.2. Real-time combat, procedural rooms, crafting with hidden recipes, the dual REST/EXPLORE loop. It's a game now. <a href="https://ceruleanoak.github.io/ascii-roguelike/">Play it here.</a></p>]]></content:encoded>
     </item>
 
     <item>
@@ -87,55 +43,25 @@
       <description>Collisions done, camera dialed in, saving and loading restored. Platforms and enemies are the last pieces — which happen to be the most interesting ones.</description>
       <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2026-01-18-migration-progress</guid>
-      <content:encoded><![CDATA[
-        <p>January was heads-down work that doesn't make for exciting updates. The kind of progress that matters but doesn't photograph well.</p>
-
-        <p>Collisions are finalized. Camera is dialed in. Saving and loading are confirmed working with a player-facing menu — replacing the old designer-only version that had no business being seen by anyone. The foundation is stable.</p>
-
-        <p>What's left is platforms (with real physics) and enemies. Enemies are the game's entire variety beyond room layouts. They're what makes each run feel different, what forces improvisation, what creates the moments players remember and describe to other people. So this isn't the boring part left over. It's the most interesting part, deferred until the architecture was solid enough to hold it.</p>
-
-        <p>I've also been studying. C++ has a learning curve that GameMaker's scripting language doesn't, and I'd rather understand the language I'm working in than reverse-engineer my own code six months from now. Slows things down in the short term. Worth it.</p>
-
-        <p>Getting close to something I can actually call a game again.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>Collisions finalized. Camera dialed in. Saving and loading working with a proper player-facing menu. What&apos;s left is platforms and enemies — which are the game&apos;s entire variety beyond room layouts. The most interesting part, deferred until the architecture was solid enough to hold it.</p>]]></content:encoded>
     </item>
 
     <item>
       <title>The C++ Engine Runs Crisp (The Player Is Technically Present)</title>
       <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-12-30-cpp-engine</link>
-      <description>The GameMaker bugs are gone. The player is invisible — no sprites yet — but the collisions work beautifully and the framerate is what it should be. Nearest-neighbor scaling fixed. Hallelujah.</description>
+      <description>The GameMaker bugs are gone. The player is invisible — no sprites yet — but the collisions work beautifully and the framerate is what it should be. Hallelujah.</description>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2025-12-30-cpp-engine</guid>
-      <content:encoded><![CDATA[
-        <p>The bugs that used to haunt me in GameMaker are gone.</p>
-
-        <p>I want to say that again because it felt genuinely surprising: the engine is running, the collisions work, and the weird persistent glitches I'd been working around for months have just stopped. Because I own every layer now. There's no platform making decisions I can't see or override.</p>
-
-        <p>The player is technically invisible — no sprite work done yet, just a hitbox moving around a tile grid — but the behavior is correct and the framerate is what I wanted. <strong>Nearest-neighbor scaling is fixed</strong>, which sounds minor and is everything for pixel art. The old version was blurring the low-res textures. Now they're sharp. The render order is properly 3D.</p>
-
-        <p>I spent a while just moving a ghost player through rooms watching the collision detection behave exactly as intended. This is hard to explain to someone who hasn't done it: the specific satisfaction of invisible infrastructure working correctly. No visual feedback, just numbers doing what they're supposed to do. It was a hallelujah moment.</p>
-
-        <p>End-of-month status: player object, controls, grid rendering, room layouts, textures, debug layer, render layers, camera (mostly), collision detection, saving and loading all done. Platforms and enemies are what's left. Those are the hard parts. They're also the fun parts.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>The bugs that used to haunt me in GameMaker are gone. The engine is running, collisions work, and the weird persistent glitches have stopped — because I own every layer now. The player is technically invisible (no sprites yet) but the behavior is correct, nearest-neighbor scaling is fixed, and the render order is properly 3D. It was a hallelujah moment.</p>]]></content:encoded>
     </item>
 
     <item>
       <title>Hanafuda Ships. GameMaker Gets a Farewell.</title>
       <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-11-30-hanafuda-cpp</link>
-      <description>Shipped a full Hanafuda rebuild with two new game modes and a visual redesign. Then started a C++ engine from scratch. Totally normal November.</description>
+      <description>Shipped a full Hanafuda rebuild with two new game modes. Then started a C++ engine from scratch. Totally normal November.</description>
       <pubDate>Sun, 30 Nov 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2025-11-30-hanafuda-cpp</guid>
-      <content:encoded><![CDATA[
-        <p>Two things happened in November that felt like bookends.</p>
-
-        <p>First: <strong>Hanafuda shipped.</strong> A full visual rebuild, two new game modes — Sakura (2–4 player) and Koi Koi Shop, an original mode built around the game's scoring system — plus support for custom card back graphics. It started as a way to play koi-koi with friends who didn't own the physical cards. It became a proper thing: configurable rules, multiple regional variants, persistent settings, something I'm actually proud of. <a href="https://ceruleanoak.github.io/hanafuda/">It's live.</a></p>
-
-        <p>Second: I said goodbye to GameMaker.</p>
-
-        <p>The farewell wasn't dramatic. I set up a C++ project with SDL2 and OpenGL, ran it, watched the terminal print <code>PENUMBRA initialized successfully</code>, and that was that. The new setup does nothing yet — there's a window, a shader that compiles cleanly, and a quit command. But that's also exactly where real things begin: not with features, but with a clean surface you built yourself.</p>
-
-        <p>GameMaker got me to a prototype. It got me through years of learning. It is not the right tool for an isometric engine with custom rendering, and I knew that going in, and I stayed anyway because starting over is hard. November was when I stopped staying.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>Hanafuda shipped with a full visual rebuild, two new game modes (Sakura 2–4 player, Koi Koi Shop), and custom card back support. Then I set up C++ with SDL2 and OpenGL, watched the terminal print <code>PENUMBRA initialized successfully</code>, and said goodbye to GameMaker. The new setup does nothing yet. That&apos;s exactly where real things begin.</p>]]></content:encoded>
     </item>
 
     <item>
@@ -144,53 +70,52 @@
       <description>GameMaker is great for experiments. It is not great when the project outgrows what it was designed for. The deliberations were brief.</description>
       <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2025-10-01-gamemaker-verdict</guid>
-      <content:encoded><![CDATA[
-        <p>I've been in deliberations with myself about GameMaker for a while. October is when the verdict came in.</p>
-
-        <p>GameMaker is a good tool. It's a particularly good tool if your game fits neatly inside the assumptions it was built around — tile-based 2D, sprite-driven, event-based logic, GML as your scripting layer. For a lot of games, that's everything you need and the tradeoffs are worthwhile.</p>
-
-        <p>Penumbra is an isometric game with a custom camera system, a rendering pipeline I need full control over, and systems that have grown to the point where the platform is doing less and less of the work and resisting me more and more. My camera system hit 3,000 lines. That's not a GameMaker problem, exactly — that's a me problem — but GameMaker made it harder to fix than it needed to be.</p>
-
-        <p>The transition options are JavaScript, Python, or C++. JavaScript is where I'm most fluent. Python has the ergonomics but not the performance profile I want for a real-time game. C++ is the hard choice and the right one for what Penumbra actually needs: direct memory control, genuine performance headroom, and the GLSL shader pipeline I've been wanting to use properly.</p>
-
-        <p>I don't regret the time in GameMaker. The prototype exists because of it. But this is where the project outgrows the training wheels, and the training wheels have to come off.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>GameMaker is a good tool — for games that fit its assumptions. Penumbra has outgrown them. The camera system hit 3,000 lines. The platform resists what I&apos;m trying to do. The verdict: C++. Direct memory control, real performance headroom, full GLSL shader access. The training wheels have to come off.</p>]]></content:encoded>
     </item>
 
     <item>
       <title>I Built My Own WaniKani Instead of Working on the Game</title>
       <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-09-02-personal-server</link>
-      <description>My personal server now sends me adaptive Japanese flashcards via SMTP. This is stage two of my off-grid plan. The game is also still happening.</description>
+      <description>SMTP-powered adaptive flashcards, delivered by my home server. Stage two of the off-grid plan is underway. The game is also still happening.</description>
       <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2025-09-02-personal-server</guid>
-      <content:encoded><![CDATA[
-        <p>WaniKani, if you're not familiar, is a web app for learning Japanese kanji through spaced repetition. It's well-designed, it works, and it's a subscription cloud service — which means your progress lives on someone else's server, billed monthly, inaccessible if the service goes down or goes away.</p>
-
-        <p>That bothers me more than it probably should. So in September, instead of working on the game, I built a replacement.</p>
-
-        <p>The system uses SMTP to send scheduled emails — review sessions, quiz cards, progress reports — all generated and delivered by my home server on a schedule I control. The review intervals are adaptive. The progress data is mine. There's no dashboard, no mobile app, no account recovery flow, because I don't need any of that. I need flashcards in my inbox at 7am.</p>
-
-        <p>This is stage two of what I'm calling the off-grid plan: moving my personal infrastructure — goals, habits, language study, exercise and diet tracking — away from cloud services entirely. It sounds like a lot of work for something I could just pay $10/month for. It is a lot of work. I find it satisfying in the same way I find game development satisfying: building something that does exactly what you need and nothing else.</p>
-
-        <p>The game prototype, for the record, is still going. The core system is solid. I want to give it another month of content before I let anyone else near it.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>Instead of working on the game I built a WaniKani replacement: SMTP-powered scheduled emails, adaptive quiz intervals, progress reports — all running on my home server. Stage two of moving my personal infrastructure (language learning, habits, exercise, diet) entirely off cloud services. It&apos;s a lot of work for something I could pay $10/month for. I find it satisfying for the same reason I find game dev satisfying.</p>]]></content:encoded>
     </item>
 
     <item>
-      <title>Refactoring a 3,000-Line Camera and Regaining the Will to Live</title>
-      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-08-30-camera-refactor</link>
-      <description>The prototype runs. The code is more manageable. Whether the refactor was worth it remains genuinely unclear. Also: I have a server again after 15 years.</description>
-      <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">ceruleanoak-2025-08-30-camera-refactor</guid>
-      <content:encoded><![CDATA[
-        <p>At some point my camera system quietly became 3,000 lines long. I don't entirely know how. You add a feature, you add an edge case, you solve a bug with a function instead of a fix, and eventually you look at the file and it has stopped being a camera system and started being a liability.</p>
+      <title>Fifteen Years of Not Being a Programmer, Then This</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-08-03-fifteen-years</link>
+      <description>Two years ago I wasn't a programmer. Now I'm building repos, shipping games, configuring APIs, and running a home server. Taking a moment to acknowledge what actually changed.</description>
+      <pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-08-03-fifteen-years</guid>
+      <content:encoded><![CDATA[<p>Two years ago I was not a programmer. I&apos;d been designing games my whole life but always relied on other people&apos;s tools. I told myself I wasn&apos;t a programmer person. I pussyfooted around it for fifteen years.</p><p>Now I&apos;m building repos, publishing games, configuring MCP servers and APIs, managing a project backlog, running a home server. I want to be direct about what made the difference: generative AI. Not as a shortcut — as the thing that finally made the gap between "I know what I want to build" and "I know how to build it" crossable. Three game prototypes, two jam projects, a pile of experiments. I&apos;ve become, in a real and functional sense, a programmer.</p><p>12-year-old me wanted to make his own Chrono Trigger. I have a full-time job and raise three kids. It&apos;s crazy. And it&apos;s happening.</p>]]></content:encoded>
+    </item>
 
-        <p>August was the anti-trust breakup: splitting it into something manageable, tracing every dependency, confirming the game still runs afterward. It does. The code is better. I didn't ship anything new during this time, which is the cost of refactoring — you spend weeks getting back to where you started, except the foundation is cleaner.</p>
+    <item>
+      <title>Enemies Exist. Also: Clown Fiesta.</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-07-27-clown-fiesta</link>
+      <description>The enemy system is built. A stress test with way too many objects confirmed the performance is fine and the render order is out of control. Both expected outcomes.</description>
+      <pubDate>Sun, 27 Jul 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-07-27-clown-fiesta</guid>
+      <content:encoded><![CDATA[<p>Enemies exist. They can push each other, damage the player, bounce in arcs, travel in paths. The stress test — more objects than I&apos;d ever actually use — confirmed performance is solid and render order is a clown fiesta. Platforms bouncing everything, coins getting pushed across the floor, enemies pile-upping in unlikely confluences. The render order problem is inherent to isometric and I&apos;ve been putting it off. I have an idea for an elegant solution. It is definitely crazy, which means I have to try it.</p>]]></content:encoded>
+    </item>
 
-        <p>Whether it was worth it: genuinely unclear. The prototype is playable and the core system is solid. I'd like to give it another month before I put it in front of anyone else.</p>
+    <item>
+      <title>Why Render Order Is the Hardest Problem in an Isometric Game</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-05-25-render-pipeline</link>
+      <description>Overhauled the rendering pipeline so objects always draw in the correct depth order. Also: coins spill when you take damage. The prototype is starting to look like something a human could play.</description>
+      <pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-05-25-render-pipeline</guid>
+      <content:encoded><![CDATA[<p>Isometric is 2D. The sense of depth is entirely an illusion maintained by draw order. This month I overhauled how the game handles it — anytime an object moves, the engine recalculates draw order for everything affected. The player always renders on top of the floor. Elevated platforms render above lower ones. It&apos;s foundational and invisible, which is the bar for this kind of work.</p><p>Also new: coin spill mechanic. Take damage or fall too far and your coins scatter — retrievable, but at the cost of a moment of vulnerability.</p>]]></content:encoded>
+    </item>
 
-        <p>In more exciting news: I have a server again. It has been almost fifteen years since I had one — adulthood has a way of stripping away the infrastructure you had when you had more time than money. The server is small, it lives in my house, and it means I can run Python scripts remotely from my laptop whenever I want. This is the beginning of something larger, though I'm not entirely sure what yet.</p>
-      ]]></content:encoded>
+    <item>
+      <title>Now I Have to Learn Aseprite</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-04-13-sprites-mechanics</link>
+      <description>Tile selection in the editor, a landing/crash mechanic, half-height tile differences, and cleaned-up room transitions. The prototype is taking shape. Sprites are next.</description>
+      <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-04-13-sprites-mechanics</guid>
+      <content:encoded><![CDATA[<p>Tile type selection is in the editor menu. Landing and crashing is in — fall too far and you&apos;ll pay for it. Half-height tile differences are supported, which adds visual interest and navigation variety without complicating the systems underneath. Room transitions are clean. The prototype is starting to feel like a space you actually want to explore. Next: sprites. Time to stop being jank and learn Aseprite.</p>]]></content:encoded>
     </item>
 
     <item>
@@ -199,17 +124,7 @@
       <description>Where this started. November 2023, GameMaker, a blank project, and a game concept that 12-year-old me would have drawn in the margins of a notebook.</description>
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">ceruleanoak-2023-11-30-origin</guid>
-      <content:encoded><![CDATA[
-        <p>There's a thing that happens when you're an adult with responsibilities and you sit down to make the game you always wanted to make as a kid. You realize immediately that twelve-year-old you had no idea how long this would take. You do it anyway.</p>
-
-        <p>That's where this started. November 2023, GameMaker, a blank project, and an idea for a game set in a citadel full of puzzle rooms run by robots and a master AI. You rescue characters who become playable — each with different abilities — and losing them sends you back to clear rooms you'd already bypassed. A game that plays differently every time, rewards both caution and recklessness, and asks the player to decide whether they're ready for a room before they enter it.</p>
-
-        <p>The prototype that month got further than I expected. Collision detection working. Room switching. Enemy detection and stealth. Fake 3D elevation — a layer-switching system so certain characters could access underground paths. Character swapping with different attributes. Not bad for a first run.</p>
-
-        <p>The game is called Penumbra. It's been in development since then, in the margins of a full-time job and raising three kids — which makes some people say "I don't know how you find the time" and others say "you probably shouldn't." Both are correct. But twelve-year-old me wanted to make a Chrono Trigger, and here we are.</p>
-
-        <p>Everything on this site came out of that first month. The roguelike, the card game, the strategy mod — all of it is a side effect of sitting down and refusing to not make something.</p>
-      ]]></content:encoded>
+      <content:encoded><![CDATA[<p>November 2023. GameMaker. A blank project and an idea for a citadel full of puzzle rooms run by robots and a master AI. You rescue characters who become playable, each with different abilities. Losing them sends you back to clear rooms you&apos;d already bypassed. First month: collision detection, room switching, enemy detection and stealth, fake 3D elevation, character swapping. The game is called Penumbra. Everything on this site is a side effect of sitting down and refusing to not make something.</p>]]></content:encoded>
     </item>
 
   </channel>
