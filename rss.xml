@@ -119,6 +119,60 @@
     </item>
 
     <item>
+      <title>This Is Definitely the Game Now</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-02-17-penumbra-direction</link>
+      <description>The C++ isometric engine has conveyor belts, slopes, and a level editor. It feels like something to build a game in. This is now the game.</description>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-02-17-penumbra-direction</guid>
+      <content:encoded><![CDATA[<p>Something clarified in February. The Room3D engine has slopes, tile types, a working level editor. It feels like something I&apos;d actually want to build a game in. And when I look at it, I know this is the game — not Moonshot as I originally conceived it, but the same delving-into-something feeling I&apos;ve been chasing. I&apos;m trying to be conservative with scope this time. Goal: isometric rooms, traversal that feels good, enemies with personality, a reason to go deeper. No more, until that exists.</p><p>Also: I&apos;ve been reading the RollerCoaster Tycoon 2 open-source code. I don&apos;t know C++. I&apos;m learning a lot. Some things age well.</p>]]></content:encoded>
+    </item>
+
+    <item>
+      <title>I Missed the Gamejam Window</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2025-02-03-gamejam</link>
+      <description>Built a hair-whipping mechanic over two weeks, didn't finish in time. Learned what I needed to learn. Would jam again, probably not solo.</description>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2025-02-03-gamejam</guid>
+      <content:encoded><![CDATA[<p>The hair game was supposed to be a jam entry. Two weeks: hair physics, whip mechanics, grapple hooks, enemy damage on contact. Day 5 had something that felt like a level. The submission window closed before I could make it an experience.</p><p>What I came away with: I know my limits better now. The mechanic is always the easy part. The experience is everything, and the experience takes three times as long as the mechanic. Would jam again, but not solo next time. The game exists in a playable state — I&apos;ll share it when I want a break between bigger projects.</p>]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Meanwhile: Project Noah</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2024-09-03-project-noah</link>
+      <description>A side project about building animal behavior as a formal, modular system. Also: beard physics. The beard was necessary.</description>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2024-09-03-project-noah</guid>
+      <content:encoded><![CDATA[<p>Project Noah is what happens when you build animal behavior as a formal system. The goal: a behavior constructor where each animal&apos;s logic is a set of attributes, not hardcoded rules. A squirrel, once alerted, should locate the nearest tree trunk and climb — not because I coded squirrel-escape-logic, but because I set its flee target to &quot;vertical wood.&quot; Get the attributes right and the squirrel emerges from the system.</p><p>Working implementations so far: pigs that love hay (hay is heavy and physically pushes them), birds with branch-perch AI, a glide mechanic when carrying a bird, a dive that lets you grab animals mid-air. Also: the main character has a beard with physics. I can&apos;t explain this except to say it&apos;s correct and I needed it.</p>]]></content:encoded>
+    </item>
+
+    <item>
+      <title>The Prototype Exists Now. You Can Play It.</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2024-06-15-first-demo</link>
+      <description>Seven months in, the Moonshot prototype is playable. Two puzzle rooms, HTML5 export, a very educational state machine bug. First testers gave it a 10/10.</description>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2024-06-15-first-demo</guid>
+      <content:encoded><![CDATA[<p>After seven months of building, the Moonshot prototype is playable. The path to playable was not smooth: macOS export requires a paid Developer license (not happening), so I switched to HTML5, which immediately threw error popups because the state machine wasn&apos;t configured correctly for the browser. Spent two days in the SnowState documentation. Fixed it. Came away with a significantly better understanding of state machines.</p><p>What&apos;s playable: a 5-to-10-minute experience with two puzzle rooms and multiple solutions each. The core design question is now testable: does character-swapping feel interesting? First playtesting was with my wife and six-year-old daughter. They gave it a 10 out of 10. Small sample size. I&apos;ll allow it.</p>]]></content:encoded>
+    </item>
+
+    <item>
+      <title>The Game Gets a Name and a Second Phase</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2024-03-01-moonshot-named</link>
+      <description>The project is now called Moonshot. Two phases: an adventure game followed by a timed escape. The calm before something you yourself created.</description>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2024-03-01-moonshot-named</guid>
+      <content:encoded><![CDATA[<p>The project has been &quot;the project&quot; for four months. In March it got a name: <strong>Moonshot</strong>.</p><p>Two-phase design: Phase one is an adventure game — puzzle rooms, character swapping, exploring a citadel at your own pace. Then, triggered by player choices and risks taken, the escape phase begins. Combat goes active, enemies turn aggressive, and whatever depth you&apos;ve reached you now have to navigate back out before time runs out. Adventure-in, escape-out. The escape is more punishing the deeper you pushed. The two halves are in conversation with each other.</p>]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Rooms That Remember You</title>
+      <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2024-01-28-moonshot-mechanics</link>
+      <description>Multi-room character swapping, a keycard system, and a room alert network. The game's core data infrastructure, and some lessons in knowing when not to over-engineer.</description>
+      <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ceruleanoak-2024-01-28-moonshot-mechanics</guid>
+      <content:encoded><![CDATA[<p>The central problem of a character-swap puzzle game is memory. When you move a block into position as one character, switch to another to break the wall it was blocking, then switch back — the block should still be there. Scale that across a dozen rooms, four characters, and a save file.</p><p>The solution: proper player structs. Each character knows its room, floor, position, and status at all times. Clean, correct, and I didn&apos;t know what a struct was when I came up with the original approach in November. Also shipping this month: a color-coded keycard system with "find out" ambiguity (card readers can trigger any signal object), and a room alert network where level 3 escalates danger across adjacent rooms. The foundation is there. The prototype will determine which pieces the game actually needs.</p>]]></content:encoded>
+    </item>
+
+    <item>
       <title>The Part Where I Decided to Make My Own Chrono Trigger</title>
       <link>https://ceruleanoak.github.io/devlog.html#ceruleanoak-2023-11-30-origin</link>
       <description>Where this started. November 2023, GameMaker, a blank project, and a game concept that 12-year-old me would have drawn in the margins of a notebook.</description>

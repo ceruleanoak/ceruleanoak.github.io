@@ -419,6 +419,106 @@
       </div>
     </article>
 
+    <!-- ═══════════════════════════════════════════════════════ FEB 2025 -->
+    <article class="post-article" id="ceruleanoak-2025-02-17-penumbra-direction">
+      <div class="post-meta">
+        <span class="post-tag">Penumbra</span>
+        <span class="post-date">Feb 17, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-02-17-penumbra-direction">#</a>
+      </div>
+      <h2 class="post-title">This Is Definitely the Game Now</h2>
+      <div class="post-body">
+        <p>Something clarified in February.</p>
+        <p>I've been building an isometric C++ engine since early January — a Room3D system, save-and-load, a player who can walk, fall, catch a ledge, and climb back up. In the last two weeks: conveyor belts, slopes, and a proper level editor with tile types. The engine is starting to behave like something I'd want to build a game in.</p>
+        <p>And when I look at it, I know this is the game. Not Moonshot as I originally envisioned it — the citadel, the robots, the character-swapping puzzles. I haven't decided whether this direction is an evolution of that concept or a departure from it. But the core feeling — a sense of descending, of delving, of spatial navigation as the primary challenge — is what I've been trying to get to all along.</p>
+        <p>I'm trying to be conservative with scope this time. Moonshot grew. Every prototype grows. The instinct to add is always stronger than the instinct to ship, and the instinct to ship is what actually makes something real. So the goal right now is: isometric rooms, traversal that feels good, enemies with personality, a reason to go deeper. No more, until that exists.</p>
+        <p>Also, I've been reading the RollerCoaster Tycoon 2 open-source code. I don't know C++, but I'm learning a lot. Turns out the isometric render logic in a 1999 game is not that different from what I need. Some things age well.</p>
+      </div>
+    </article>
+
+    <article class="post-article" id="ceruleanoak-2025-02-03-gamejam">
+      <div class="post-meta">
+        <span class="post-tag">Devlog</span>
+        <span class="post-date">Feb 3, 2025</span>
+        <a class="post-anchor" href="#ceruleanoak-2025-02-03-gamejam">#</a>
+      </div>
+      <h2 class="post-title">I Missed the Gamejam Window</h2>
+      <div class="post-body">
+        <p>The hair game was supposed to be a jam entry.</p>
+        <p>For about two weeks in January I built a game around a whip-and-grapple mechanic driven by the player's hair: advanced physics, enemy damage on whip contact, hook anchoring, environmental puzzles. Day 1 was hair simulation. Day 5 was a small functional playground with hooks, hazards, and something that felt like a level. I was excited about it. The submission window closed before I could finish it.</p>
+        <p>I missed it. Not by a little. I had a cool mechanic and an incomplete game and no room in the schedule for the content it needed to become an experience. Solo jams are unforgiving that way — the mechanic is easy, the experience is everything, and the experience takes three times as long as the mechanic.</p>
+        <p>What I came away with: I know my current limits better. I know which parts of a prototype I can execute quickly and which ones take longer than I expect every time. And I know that whipping enemies with your hair is genuinely fun — a note I'll keep. Would jam again, but not solo next time. Or at least not without a much simpler scope.</p>
+        <p>The game exists in a playable state. When I feel like a break between bigger projects, I'll share it.</p>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════════════════ SEP 2024 -->
+    <article class="post-article" id="ceruleanoak-2024-09-03-project-noah">
+      <div class="post-meta">
+        <span class="post-tag">Devlog</span>
+        <span class="post-date">Sep 3, 2024</span>
+        <a class="post-anchor" href="#ceruleanoak-2024-09-03-project-noah">#</a>
+      </div>
+      <h2 class="post-title">Meanwhile: Project Noah</h2>
+      <div class="post-body">
+        <p>Every project teaches you things. Sometimes the way it teaches you is by becoming something else.</p>
+        <p>The adventure-game direction of Moonshot is solid, but the core mechanic — navigating a citadel, swapping between characters to solve puzzles — had grown more complex than I'd planned. So I did what I do when a project needs space: I started a new one.</p>
+        <p>Project Noah is what happens when you build animal behavior as a formal system. The concept: a character in a forest environment with animals that behave according to modular, swappable rules. Birds that fly to branches when startled, then perch and watch. Pigs that love hay — and hay is a heavy object, so it physically pushes them around if thrown. A dive mechanic that lets you grab animals in midair. A glide while holding a bird.</p>
+        <p>The design goal isn't "make a game with animals." It's to build a behavior constructor. A squirrel, once startled, should locate the nearest tree trunk, run to a set distance, and leap onto it — not because I hardcoded squirrel-escape-logic, but because I set its <em>flee target</em> to "vertical wood" and its <em>flee behavior</em> to "climb." Get the attributes right and the squirrel emerges from the system. That's the part I'm chasing.</p>
+        <p>I also gave the main character a beard with physics. I don't know how to justify this except that it's correct and I needed it.</p>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════════════════ JUN 2024 -->
+    <article class="post-article" id="ceruleanoak-2024-06-15-first-demo">
+      <div class="post-meta">
+        <span class="post-tag">Moonshot</span>
+        <span class="post-date">Jun 15, 2024</span>
+        <a class="post-anchor" href="#ceruleanoak-2024-06-15-first-demo">#</a>
+      </div>
+      <h2 class="post-title">The Prototype Exists Now. You Can Play It.</h2>
+      <div class="post-body">
+        <p>After seven months of building, the Moonshot prototype is playable.</p>
+        <p>The path there was not smooth. I'd been developing entirely on macOS, and GameMaker's macOS export requires a paid Developer license. Not paying for that. I switched to HTML5 export — and immediately hit a wall: the state machine wasn't configured correctly for the browser. The game launched and threw error popups on every interaction.</p>
+        <p>I spent two days furiously reading SnowState documentation, which is the state machine library this project runs on. Found the issue. Fixed it. Came away with a significantly better understanding of state machines than I had before. That's the toll the browser extracts for letting you publish for free.</p>
+        <p>What's playable is a 5-to-10-minute experience depending on how curious you are. Two puzzle rooms with multiple solutions each. The core design question is testable: does character-swapping create the push-and-pull I was going for? Does being limited by the character you're playing actually feel interesting rather than frustrating?</p>
+        <p>Initial playtesting: my wife and six-year-old daughter, 10 out of 10, lots of laughing. Small sample size. I'll allow it.</p>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════════════════ MAR 2024 -->
+    <article class="post-article" id="ceruleanoak-2024-03-01-moonshot-named">
+      <div class="post-meta">
+        <span class="post-tag">Moonshot</span>
+        <span class="post-date">Mar 1, 2024</span>
+        <a class="post-anchor" href="#ceruleanoak-2024-03-01-moonshot-named">#</a>
+      </div>
+      <h2 class="post-title">The Game Gets a Name and a Second Phase</h2>
+      <div class="post-body">
+        <p>The project has been "the project" for four months. In March it got a name.</p>
+        <p><strong>Moonshot.</strong> Two-phase design: the first phase is an adventure game — puzzle rooms, character swapping, exploring a citadel at your own pace. Then, triggered by a combination of player choices and risks taken, the escape phase begins. The Moonshot power activates, enhancing combat. Enemies turn aggressive. Whatever depth you've managed to reach, you now have to navigate back out before time runs out.</p>
+        <p>The structure clicked when I articulated it: adventure-in, escape-out. Dungeon-delve paired with dungeon-exit. The calm before something you yourself created. The escape is more stressful the deeper you went and the more risks you took. The player who played it safe has an easier time getting out. The player who pushed hard has a harder one. That's the design — the two halves are in conversation with each other.</p>
+        <p>I've been in a bit of a crisis of faith with the gameplay loop over the past month, which I'm mentioning because I think that's a normal part of building something. Taking time to step back and honestly assess whether the design is working. The assessment: mostly yes. The escape mechanic is what makes the adventure phase interesting. Without it, you're just solving puzzles. With it, every room you enter is also a room you'll have to leave in a hurry.</p>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════════════════ JAN 2024 -->
+    <article class="post-article" id="ceruleanoak-2024-01-28-moonshot-mechanics">
+      <div class="post-meta">
+        <span class="post-tag">Moonshot</span>
+        <span class="post-date">Jan 28, 2024</span>
+        <a class="post-anchor" href="#ceruleanoak-2024-01-28-moonshot-mechanics">#</a>
+      </div>
+      <h2 class="post-title">Rooms That Remember You</h2>
+      <div class="post-body">
+        <p>The central problem of a character-swap puzzle game is memory. When you move a block into position as the Grabber, switch to Jersey to break the wall it was blocking, then switch back — the block should still be where you left it. Now scale that across a dozen rooms, four characters, and a save file.</p>
+        <p>December and January were spent on that problem. The multi-character system now uses proper structs: each character knows its room, floor, position, and status at all times. The old approach — invisible tracking objects for each character — was fragile and increasingly painful to maintain. Structs are cleaner. I didn't even know what a struct was when I came up with the original system in November. The code rewrites itself as you learn.</p>
+        <p>Alongside that: a keycard system. Each card and reader knows its color; the player struct tracks what's collected. What I like is the "find out" element — a card reader can trigger any signal object, not just doors. Use a card somewhere and you might not immediately know what it did. That kind of designed ambiguity feels right for this game.</p>
+        <p>The alert system is also in. Level 0 is peaceful, level 3 locks doors and escalates danger across adjacent rooms. The whole network responds to what the player does in one room. Whether the full version of this survives to the final game depends on the prototype — I'm following the three-cases-before-you-generalize rule, and the alarm system doesn't have three cases yet. But the foundation is solid enough to build on.</p>
+        <p>One personal note: I've started using AI-assisted code help more seriously this month. GameMaker's scripting language starts to feel like JavaScript without guardrails once your game is complex enough, and having a tool that can absorb a full design document and then help you implement one piece of it at a time is genuinely different from anything I had access to before.</p>
+      </div>
+    </article>
+
     <!-- ═══════════════════════════════════════════════════════ NOV 2023 -->
     <article class="post-article" id="ceruleanoak-2023-11-30-origin">
       <div class="post-meta">
