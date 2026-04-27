@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="alternate" type="application/rss+xml" title="CeruleanOak — From the workshop" href="/rss.xml">
 <title>CeruleanOak — Small games. Built solo.</title>
+<link rel="alternate" type="application/rss+xml" title="CeruleanOak — From the workshop" href="/rss.xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +58,7 @@
 
   /* Hero row */
   .hero {
+    position: relative;
     padding-top: 56px;
     padding-bottom: 32px;
     display: grid;
@@ -119,9 +120,117 @@
   .btn--ghost { background: transparent; color: var(--ink); }
   .btn--ghost:hover { box-shadow: 2px 2px 0 var(--ink); }
 
-  /* Now card */
+  /* Now card + tacked music card */
+  .now-stack { position: relative; }
   .now-note { padding: 32px 24px 22px; transform: rotate(1.1deg); background: var(--note-yellow); }
   .now-note .tape { top: -12px; right: 30px; width: 78px; height: 22px; transform: rotate(4deg); }
+
+  .music-tab {
+    position: absolute;
+    right: 28px;
+    bottom: -34px;
+    width: 200px;
+    text-decoration: none;
+    color: var(--ink);
+    transform: rotate(-3deg);
+    display: block;
+    transition: transform 180ms ease;
+    z-index: 2;
+  }
+  .music-tab:hover { transform: rotate(-1.8deg) translateY(-3px); }
+  .music-tab-tape {
+    position: absolute; top: -8px; right: 22px;
+    width: 36px; height: 14px;
+    background: rgba(231,90,43,0.55);
+    border: 1px dashed rgba(0,0,0,0.18);
+    transform: rotate(8deg);
+    z-index: 3;
+  }
+  .music-tab-meta {
+    display: block; margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    color: var(--ink-3); letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  /* Cassette object — same visual language as the music page, scaled to ~200px wide */
+  .cassette {
+    display: block; position: relative;
+    width: 200px; height: 126px;
+    background: #e8dec0;
+    background-image:
+      radial-gradient(circle at 30% 60%, rgba(0,0,0,0.04) 0.5px, transparent 1px),
+      radial-gradient(circle at 70% 30%, rgba(0,0,0,0.04) 0.5px, transparent 1px);
+    background-size: 8px 8px, 11px 11px;
+    border: 1.5px solid var(--ink);
+    border-radius: 2px;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.4);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .cassette-screws::before, .cassette-screws::after {
+    content: ''; position: absolute; width: 5px; height: 5px;
+    background: #1a1410; border-radius: 50%;
+    top: 5px;
+  }
+  .cassette-screws::before { left: 5px; } .cassette-screws::after { right: 5px; }
+  .cassette-band {
+    position: absolute; top: 12px; left: 11px; right: 11px; height: 26px;
+    background: var(--canopy);
+    border: 1px solid var(--ink);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 7px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.18);
+  }
+  .cassette-band-l, .cassette-band-r { display: flex; flex-direction: column; line-height: 1; }
+  .cassette-band-r { text-align: right; }
+  .cassette-side, .cassette-year { font-size: 6px; letter-spacing: 0.16em; color: rgba(0,0,0,0.6); }
+  .cassette-title { font-family: 'Kalam', cursive; font-size: 13px; color: var(--ink); font-weight: 700; margin-top: 1px; }
+  .cassette-runtime { font-family: 'Kalam', cursive; font-size: 8px; color: var(--ink); margin-top: 2px; }
+  .cassette-hubs {
+    position: absolute; top: 43px; left: 22px; right: 22px; height: 60px;
+    background: #e0d6b8;
+    border: 1px solid var(--ink);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.18);
+  }
+  .cassette-brand {
+    position: absolute; top: 3px; left: 50%; transform: translateX(-50%);
+    font-size: 5px; color: #8d8377; letter-spacing: 0.18em; white-space: nowrap;
+  }
+  .cassette-reel {
+    position: absolute; top: 14px; width: 38px; height: 38px; border-radius: 50%;
+    background: radial-gradient(circle, #2a241e 0%, #1a1410 70%);
+    border: 1px solid #1a1410;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5);
+  }
+  .cassette-reel::before {
+    content: ''; position: absolute; inset: 8px; border-radius: 50%;
+    background: repeating-conic-gradient(#1a1410 0deg 18deg, #2a241e 18deg 36deg);
+    border: 1px solid #1a1410;
+  }
+  .cassette-reel::after {
+    content: ''; position: absolute; inset: 14px; border-radius: 50%;
+    background: #fbf8f1; border: 1px solid #1a1410;
+  }
+  .cassette-reel--l { left: 8px; }
+  .cassette-reel--r { right: 8px; }
+  .cassette-label {
+    position: absolute; top: 22px; left: 50%; transform: translateX(-50%) rotate(-1.2deg);
+    background: #fff8df; border: 1px solid var(--ink);
+    padding: 3px 6px;
+    font-family: 'Kalam', cursive; font-size: 9px; font-weight: 700;
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    white-space: nowrap;
+  }
+  .cassette-tape-band {
+    position: absolute; bottom: 6px; left: 8px; right: 8px; height: 5px;
+    background: linear-gradient(180deg, #4a3520 0%, #3a2818 50%, #4a3520 100%);
+    border: 1px solid #1a1410;
+  }
+  .cassette-foot {
+    position: absolute; bottom: 3px; left: 0; right: 0;
+    text-align: center; font-size: 5px;
+    color: #5e5449; letter-spacing: 0.16em;
+  }
   .now-row { display: flex; justify-content: space-between; align-items: center; }
   .now-kicker { font-family: 'Kalam', cursive; font-size: 14px; color: var(--ink-3); }
   .now-status { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grass); letter-spacing: 0.06em; }
@@ -345,6 +454,7 @@
     .topbar { padding: 14px 18px; }
     .nav { display: none; }
     .hero { grid-template-columns: 1fr; gap: 18px; padding-top: 28px; padding-bottom: 18px; }
+    .music-tab { position: static; transform: rotate(-1.5deg); margin: 24px auto 0; }
     .hero-title { font-size: 40px; }
     .games { grid-template-columns: 1fr; gap: 28px; padding: 24px 0 24px; }
     .game-wrap { transform: rotate(0deg) !important; }
@@ -412,7 +522,6 @@
     <a href="#games">Games</a>
     <a href="#now">Now</a>
     <a href="#workshop">Devlog</a>
-    <a href="/music.html">Music</a>
     <a href="#about">About</a>
   </nav>
 </div>
@@ -446,7 +555,7 @@
       <p class="now-body">
         A successor to the original. Currently working on procedural dungeon flow, food &amp; recipe systems, and a combat loop that doesn't punish patience.
       </p>
-      <div class="progress-row"><span>progress</span><span>20% · playable in alpha</span></div>
+      <div class="progress-row"><span>progress</span><span>20% · ships when ready</span></div>
       <div class="progress" id="progress-bar"></div>
       <div class="now-tags">
         <a class="tag" href="#workshop">Devlog ↗</a>
@@ -454,6 +563,33 @@
         <a class="tag" href="#discord">Discord ↗</a>
       </div>
     </article>
+
+    <!-- Music card · cassette object tacked just below the Now card. Direction A. -->
+    <a class="music-tab" href="music.html" aria-label="Game Music · 20 tracks">
+      <span class="music-tab-tape"></span>
+      <span class="cassette">
+        <span class="cassette-screws"></span>
+        <span class="cassette-band">
+          <span class="cassette-band-l">
+            <span class="cassette-side">SIDE A · 6 TRK</span>
+            <span class="cassette-title">NES</span>
+          </span>
+          <span class="cassette-band-r">
+            <span class="cassette-year">'24–'25</span>
+            <span class="cassette-runtime">14:09</span>
+          </span>
+        </span>
+        <span class="cassette-hubs">
+          <span class="cassette-brand">CERULEANOAK · CO·90</span>
+          <span class="cassette-reel cassette-reel--l"></span>
+          <span class="cassette-reel cassette-reel--r"></span>
+          <span class="cassette-label">Side A</span>
+          <span class="cassette-tape-band"></span>
+        </span>
+        <span class="cassette-foot">STEREO · DOLBY B · LOW-NOISE</span>
+      </span>
+      <span class="music-tab-meta">Game Music · 20 trk · '08–'26 →</span>
+    </a>
   </section>
 
   <!-- Games divider -->
@@ -568,9 +704,8 @@
       </p>
       <div class="about-links">
         <a class="tag" href="https://github.com/ceruleanoak" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="tag" href="https://discord.gg/XNNFDNB54r" target="_blank" rel="noopener">Discord ↗</a>
         <a class="tag" href="/rss.xml">RSS ↗</a>
-        <a class="tag" href="mailto:hello@ceruleanoak.dev">Email ↗</a>
+        <a class="tag" href="/cdn-cgi/l/email-protection#1b737e7777745b787e696e777e7a75747a70357f7e6d">Email ↗</a>
       </div>
     </article>
   </section>
@@ -587,7 +722,7 @@
   </div>
 </footer>
 
-<script type="text/babel">
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/babel">
   // Mount the pixel oak in the nav
   ReactDOM.createRoot(document.getElementById('oak-nav')).render(<PixelOak size={22} />);
 
