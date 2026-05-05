@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>2048 — Alphabet · Fruit · Chroma</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h1 class="logo">2048<span>·</span></h1>
+
+      <section class="panel">
+        <h2>Mode</h2>
+        <div class="mode-list" id="modeList">
+          <button class="mode-btn active" data-mode="number">
+            <span class="mode-icon">2</span>
+            <span class="mode-label">Number</span>
+          </button>
+          <button class="mode-btn" data-mode="alphabet">
+            <span class="mode-icon">A</span>
+            <span class="mode-label">Alphabet</span>
+          </button>
+          <button class="mode-btn" data-mode="fruit">
+            <span class="mode-icon">🍒</span>
+            <span class="mode-label">Fruit</span>
+          </button>
+          <button class="mode-btn" data-mode="chroma">
+            <span class="mode-icon chroma-icon"></span>
+            <span class="mode-label">Chroma</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Grid</h2>
+        <div class="size-toggle">
+          <button class="size-btn active" data-size="4">4 × 4</button>
+          <button class="size-btn locked" data-size="5" id="size5Btn">
+            <span class="lock">🔒</span>
+            <span>5 × 5</span>
+          </button>
+        </div>
+        <p class="hint" id="unlockHint">Win once to unlock 5 × 5.</p>
+      </section>
+
+      <section class="panel chroma-panel" id="chromaPanel" hidden>
+        <h2>Color Ramp</h2>
+        <div class="ramp-list" id="rampList"></div>
+      </section>
+
+      <section class="panel scores">
+        <div class="score-block">
+          <div class="score-label">Score</div>
+          <div class="score-value" id="score">0</div>
+        </div>
+        <div class="score-block">
+          <div class="score-label">Best</div>
+          <div class="score-value" id="best">0</div>
+        </div>
+      </section>
+
+      <button class="new-game" id="newGame">New Game</button>
+
+      <p class="instructions">
+        Arrow keys or swipe. Tiles fall toward the press direction.
+        Two equal tiles merge into the next.
+      </p>
+    </aside>
+
+    <main class="board-area">
+      <div class="board-wrap">
+        <div class="board" id="board">
+          <div class="cells" id="cells"></div>
+          <div class="tiles" id="tiles"></div>
+        </div>
+        <div class="overlay" id="overlay" hidden>
+          <div class="overlay-card">
+            <div class="overlay-title" id="overlayTitle">You win!</div>
+            <div class="overlay-sub" id="overlaySub"></div>
+            <div class="overlay-actions">
+              <button id="overlayContinue">Keep playing</button>
+              <button id="overlayRestart">New game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
